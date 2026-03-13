@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Agendamentos - Pilates RENOVAR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --renovar-primary: #2D5A27;
+        }
+
+        .sidebar-link:hover {
+            background-color: #f0fdf4;
+            color: var(--renovar-primary);
+        }
+
+        .sidebar-active {
+            background-color: #f0fdf4;
+            color: var(--renovar-primary);
+            border-left: 4px solid var(--renovar-primary);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="index.html" class="flex-shrink-0 flex items-center hover:opacity-80 transition">
+                    <span class="text-2xl font-bold text-green-800 tracking-tighter">RENOVAR<span
+                            class="text-green-500">.</span></span>
+                </a>
+                <div class="hidden md:flex space-x-8 font-medium text-gray-600">
+                    <a href="planos-pacotes.html" class="hover:text-green-700 transition">Planos e Pacotes</a>
+                    <a href="sobreempresa.html" class="hover:text-green-700 transition">Sobre</a>
+                    <a href="estrutura.html" class="hover:text-green-700 transition">Unidades</a>
+                    <a href="contatos.html" class="hover:text-green-700 transition">Contato</a>
+                </div>
+                <div class="flex items-center space-x-4 border-l pl-6 border-gray-100">
+                    <a href="seguranca.html" class="text-gray-400 hover:text-green-700"><i
+                            class="fas fa-cog text-xl"></i></a>
+                    <div class="flex items-center space-x-3">
+                        <a href="perfil.html" class="flex items-center space-x-3 hover:opacity-80 transition">
+                            <div class="text-right hidden sm:block leading-none">
+                                <p class="text-sm font-bold text-gray-800">Othon Gustavo</p>
+                                <p class="text-[10px] text-green-600 font-bold uppercase">Cliente</p>
+                            </div>
+                            <img src="https://ui-avatars.com/api/?name=Othon+Gustavo&background=2D5A27&color=fff"
+                                class="w-10 h-10 rounded-full border border-gray-200">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex flex-1 max-w-7xl mx-auto w-full">
+        <aside class="w-64 bg-white shadow-sm hidden md:flex flex-col border-r border-gray-100 mt-6 rounded-tr-2xl">
+            <nav class="mt-8 flex-1 px-4 space-y-2">
+                <a href="areaclienta.html"
+                    class="sidebar-active flex items-center px-4 py-3 text-sm font-bold rounded-xl transition">
+                    <i class="fas fa-calendar-alt mr-3 text-lg"></i> Ver Agendar
+                </a>
+                <a href="agendaconsultacliente.html"
+                    class="sidebar-link flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-xl transition">
+                    <i class="fas fa-plus-circle mr-3 text-lg"></i> Agendar Consulta
+                </a>
+                <a href="extratocliente.html"
+                    class="sidebar-link flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-xl transition">
+                    <i class="fas fa-file-invoice-dollar mr-3 text-lg"></i> Extrato
+                </a>
+                <a href="login.html"
+                    class="sidebar-link flex items-center px-4 py-3 text-sm font-medium text-red-600 rounded-xl transition mt-auto">
+                    <i class="fas fa-power-off mr-3 text-lg"></i> Sair
+                </a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-10">
+            <div class="mb-10">
+                <h1 class="text-3xl font-black text-gray-800 tracking-tight">Minha Agenda</h1>
+                <p class="text-gray-500">Visualize todas as suas próximas sessões marcadas.</p>
+            </div>
+
+            <div class="space-y-10">
+
+                <div>
+                    <h2 class="text-sm font-black text-green-700 uppercase tracking-widest mb-4 flex items-center">
+                        <span class="w-2 h-2 bg-green-700 rounded-full mr-2"></span> Esta Semana
+                    </h2>
+
+                    <div class="space-y-4">
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-center gap-6 hover:shadow-md transition">
+                            <div
+                                class="bg-green-700 text-white w-16 h-16 rounded-xl flex flex-col items-center justify-center">
+                                <span class="text-xs font-bold uppercase">Mar</span>
+                                <span class="text-xl font-black leading-none">12</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-extrabold text-gray-800">Pilates Clínico</h3>
+                                <p class="text-sm text-gray-500 italic"><i class="far fa-clock mr-1"></i> 14:30h -
+                                    Quinta-feira</p>
+                            </div>
+                            <div class="text-right">
+                                <span
+                                    class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Confirmado</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-center gap-6 hover:shadow-md transition">
+                            <div
+                                class="bg-gray-200 text-gray-600 w-16 h-16 rounded-xl flex flex-col items-center justify-center">
+                                <span class="text-xs font-bold uppercase">Mar</span>
+                                <span class="text-xl font-black leading-none">14</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-extrabold text-gray-800">Fisioterapia Traumato-Ortopédica</h3>
+                                <p class="text-sm text-gray-500 italic"><i class="far fa-clock mr-1"></i> 09:00h -
+                                    Sábado</p>
+                            </div>
+                            <div class="text-right">
+                                <span
+                                    class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Avaliação</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-sm font-black text-gray-400 uppercase tracking-widest mb-4 flex items-center">
+                        <span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Próximas Semanas
+                    </h2>
+
+                    <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
+                        <table class="w-full text-left border-collapse">
+                            <tbody class="divide-y divide-gray-50">
+                                <tr class="hover:bg-gray-50 transition cursor-default">
+                                    <td class="px-6 py-4 font-bold text-gray-800">19/03</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 font-medium">Quinta-feira</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 font-bold">14:30h</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Pilates Individual</td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-gray-300 hover:text-red-500"><i
+                                                class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition cursor-default">
+                                    <td class="px-6 py-4 font-bold text-gray-800">26/03</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 font-medium">Quinta-feira</td>
+                                    <td class="px-6 py-4 text-sm text-gray-600 font-bold">14:30h</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Pilates Individual</td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button class="text-gray-300 hover:text-red-500"><i
+                                                class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <footer class="bg-gray-900 text-gray-300 pt-12 pb-8 mt-0">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4 uppercase font-bold">RENOVAR</h4>
+                <p class="text-sm leading-relaxed">
+                    Sua clínica de confiança para Pilates e Fisioterapia. Transformando vidas através do movimento
+                    consciente e reabilitação personalizada.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">Links Úteis</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition">Dúvidas Frequentes</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Política de Privacidade</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Trabalhe Conosco</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Blog da Saúde</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4 font-bold">Unidade Paulo Afonso</h4>
+                <p class="text-sm">Rua Otaviano Leandro de Moraes 165, Centro.</p>
+                <p class="text-sm mt-1">Empresarial Star Coworking</p>
+                <p class="text-sm mt-1 font-bold">Paulo Afonso - BA</p>
+                <p class="text-sm font-bold text-green-400 mt-4">
+                    <i class="fab fa-whatsapp"></i> +55 75 98846-6843
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">Siga-nos</h4>
+                <div class="flex space-x-6">
+                    <a href="https://www.instagram.com/pilates.renovar?igsh=MWIwdmF0b2prYmgwMQ==" target="_blank"
+                        class="text-3xl hover:text-pink-500 transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5575988466843" target="_blank"
+                        class="text-3xl hover:text-green-500 transition duration-300">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                <p class="text-xs mt-6 text-gray-500 italic font-medium">Agende sua aula experimental!</p>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-xs text-gray-500">
+            <p>&copy; 2026 Pilates RENOVAR. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Profissional - Pilates RENOVAR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --renovar-primary: #2D5A27;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+            outline: none;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-input:focus {
+            border-color: #166534;
+            box-shadow: 0 0 0 2px #f0fdf4;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="areadoutor.html" class="flex-shrink-0 flex items-center hover:opacity-80 transition">
+                    <span class="text-2xl font-bold text-green-800 tracking-tighter uppercase">RENOVAR<span
+                            class="text-green-500">.</span></span>
+                </a>
+                <div class="hidden md:flex space-x-8 font-medium text-gray-600">
+                    <a href="planos-pacotes.html" class="hover:text-green-700 transition font-bold">Planos e Pacotes</a>
+                    <a href="sobreempresa.html" class="hover:text-green-700 transition font-bold">Sobre</a>
+                    <a href="estrutura.html" class="hover:text-green-700 transition font-bold">Unidades</a>
+                    <a href="contatos.html" class="hover:text-green-700 transition font-bold">Contato</a>
+                </div>
+                <div class="flex items-center space-x-4 border-l pl-6 border-gray-100">
+                    <div class="flex items-center space-x-3 text-right">
+                        <div class="hidden sm:block leading-none">
+                            <p class="text-sm font-black text-gray-800 italic">Dr. Othon Gustavo</p>
+                            <p class="text-[10px] text-green-600 font-bold uppercase tracking-widest text-right">
+                                Profissional</p>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name=Othon+Gustavo&background=2D5A27&color=fff"
+                            class="w-10 h-10 rounded-full border-2 border-green-600 shadow-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex flex-1 max-w-7xl mx-auto w-full">
+        <aside class="w-64 bg-white shadow-sm hidden md:flex flex-col border-r border-gray-100 mt-6 rounded-tr-3xl">
+            <nav class="mt-10 flex-1 px-4 space-y-2">
+                <a href="areadoutor.html"
+                    class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-green-50 rounded-xl transition">
+                    <i class="fas fa-home mr-3 text-lg"></i> Início do Painel
+                </a>
+                <a href="perfildoutor.html"
+                    class="bg-green-50 text-green-800 flex items-center px-4 py-3 text-sm font-bold rounded-xl border-l-4 border-green-700">
+                    <i class="fas fa-user-md mr-3 text-lg"></i> Perfil Profissional
+                </a>
+                <a href="segurancadoutor.html"
+                    class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-green-50 rounded-xl transition">
+                    <i class="fas fa-shield-alt mr-3 text-lg"></i> Segurança
+                </a>
+                <div class="pt-10">
+                    <a href="login.html"
+                        class="flex items-center px-4 py-3 text-sm font-black text-red-500 hover:bg-red-50 rounded-xl transition uppercase tracking-widest">
+                        <i class="fas fa-sign-out-alt mr-3 text-lg"></i> Sair do Painel
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-10">
+            <div class="flex flex-col md:flex-row items-center gap-8 mb-12">
+                <div class="relative">
+                    <img src="https://ui-avatars.com/api/?name=Othon+Gustavo&background=2D5A27&color=fff&size=150"
+                        class="w-32 h-32 rounded-3xl shadow-xl border-4 border-white">
+                    <button
+                        class="absolute -bottom-2 -right-2 bg-green-700 text-white p-3 rounded-xl shadow-lg hover:scale-110 transition">
+                        <i class="fas fa-camera text-xs"></i>
+                    </button>
+                </div>
+                <div class="text-center md:text-left">
+                    <h1 class="text-3xl font-black text-gray-800 tracking-tight italic">Dr. Othon Gustavo</h1>
+                    <p class="text-gray-500 font-medium italic">othon.doutor@pilatesrenovar.com.br</p>
+                    <div class="mt-3 flex gap-2 justify-center md:justify-start">
+                        <span
+                            class="bg-green-100 text-green-700 text-[10px] font-black px-3 py-1 rounded-full uppercase italic">Fisioterapeuta</span>
+                        <span
+                            class="bg-gray-100 text-gray-500 text-[10px] font-black px-3 py-1 rounded-full uppercase italic">CREFITO:
+                            12345-BA</span>
+                    </div>
+                </div>
+            </div>
+
+            <form class="space-y-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                    <h3 class="text-sm font-black text-green-700 uppercase tracking-widest mb-6 flex items-center">
+                        <i class="fas fa-id-card-alt mr-2"></i> Dados Profissionais
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-black text-gray-400 uppercase mb-2">Nome Completo</label>
+                            <input type="text" value="Dr. Othon Gustavo de Souza" class="form-input">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black text-gray-400 uppercase mb-2">Número Registro
+                                Profissional</label>
+                            <input type="text" value="CREFITO 12345-BA" class="form-input bg-gray-50 border-none"
+                                disabled>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black text-gray-400 uppercase mb-2">E-mail
+                                Profissional</label>
+                            <input type="email" value="othon.doutor@pilatesrenovar.com.br" class="form-input">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black text-gray-400 uppercase mb-2">Telefone
+                                Comercial</label>
+                            <input type="text" value="(75) 98846-6843" class="form-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                    <h3 class="text-sm font-black text-gray-800 uppercase tracking-widest mb-6 flex items-center">
+                        <i class="fas fa-graduation-cap mr-2"></i> Especialidades e Experiência
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-black text-gray-400 uppercase mb-2">Mini Biografia
+                                Profissional</label>
+                            <textarea rows="3" class="form-input"
+                                placeholder="Descreva sua formação e tempo de atuação..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-4">
+                    <button type="button"
+                        class="px-8 py-3 rounded-xl font-bold text-gray-400 hover:text-gray-600 transition">Descartar</button>
+                    <button type="submit"
+                        class="bg-green-700 text-white px-10 py-3 rounded-xl font-black shadow-xl shadow-green-100 hover:bg-green-800 transition uppercase tracking-widest">Salvar
+                        Perfil</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <footer class="bg-gray-900 text-gray-300 pt-12 pb-8 mt-0">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4 uppercase font-bold">RENOVAR</h4>
+                <p class="text-sm leading-relaxed">
+                    Sua clínica de confiança para Pilates e Fisioterapia. Transformando vidas através do movimento
+                    consciente e reabilitação personalizada.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">Links Úteis</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition">Dúvidas Frequentes</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Política de Privacidade</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Trabalhe Conosco</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Blog da Saúde</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4 font-bold">Unidade Paulo Afonso</h4>
+                <p class="text-sm">Rua Otaviano Leandro de Moraes 165, Centro.</p>
+                <p class="text-sm mt-1">Empresarial Star Coworking</p>
+                <p class="text-sm mt-1 font-bold">Paulo Afonso - BA</p>
+                <p class="text-sm font-bold text-green-400 mt-4">
+                    <i class="fab fa-whatsapp"></i> +55 75 98846-6843
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">Siga-nos</h4>
+                <div class="flex space-x-6">
+                    <a href="https://www.instagram.com/pilates.renovar?igsh=MWIwdmF0b2prYmgwMQ==" target="_blank"
+                        class="text-3xl hover:text-pink-500 transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5575988466843" target="_blank"
+                        class="text-3xl hover:text-green-500 transition duration-300">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                <p class="text-xs mt-6 text-gray-500 italic font-medium">Agende sua aula experimental!</p>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-xs text-gray-500">
+            <p>&copy; 2026 Pilates RENOVAR. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

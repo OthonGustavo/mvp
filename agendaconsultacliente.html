@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Consulta - Pilates RENOVAR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --renovar-primary: #2D5A27;
+        }
+
+        .sidebar-link:hover {
+            background-color: #f0fdf4;
+            color: var(--renovar-primary);
+        }
+
+        .sidebar-active {
+            background-color: #f0fdf4;
+            color: var(--renovar-primary);
+            border-left: 4px solid var(--renovar-primary);
+        }
+
+        .time-slot:hover {
+            border-color: var(--renovar-primary);
+            color: var(--renovar-primary);
+        }
+
+        .time-selected {
+            background-color: var(--renovar-primary);
+            color: white !important;
+            border-color: var(--renovar-primary);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="areaclienta.html" class="flex-shrink-0 flex items-center hover:opacity-80 transition">
+                    <span class="text-2xl font-bold text-green-800 tracking-tighter">RENOVAR<span
+                            class="text-green-500">.</span></span>
+                </a>
+                <div class="hidden md:flex space-x-8 font-medium text-gray-600">
+                    <a href="planos-pacotes.html" class="hover:text-green-700 transition">Planos e Pacotes</a>
+                    <a href="sobreempresa.html" class="hover:text-green-700 transition">Sobre</a>
+                    <a href="estrutura.html" class="hover:text-green-700 transition">Unidades</a>
+                    <a href="contatos.html" class="hover:text-green-700 transition">Contato</a>
+                </div>
+                <div class="flex items-center space-x-4 border-l pl-6 border-gray-100">
+                    <a href="seguranca.html" class="text-gray-400 hover:text-green-700"><i
+                            class="fas fa-cog text-xl"></i></a>
+                    <a href="perfil.html" class="flex items-center space-x-3 hover:opacity-80 transition">
+                        <div class="text-right hidden sm:block leading-none">
+                            <p id="user-name-header" class="text-sm font-bold text-gray-800">Carregando...</p>
+                            <p class="text-[10px] text-green-600 font-bold uppercase tracking-widest">Cliente</p>
+                        </div>
+                        <img id="user-img-header" src="https://ui-avatars.com/api/?name=User&background=2D5A27&color=fff"
+                            class="w-10 h-10 rounded-full border border-gray-200 shadow-sm">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex flex-1 max-w-7xl mx-auto w-full">
+        <aside class="w-64 bg-white shadow-sm hidden md:flex flex-col border-r border-gray-100 mt-6 rounded-tr-2xl">
+            <nav class="mt-8 flex-1 px-4 space-y-2">
+                <a href="areaclienta.html"
+                    class="sidebar-link flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-xl transition">
+                    <i class="fas fa-calendar-alt mr-3 text-lg"></i> Ver Agendar
+                </a>
+                <a href="agendaconsultacliente.html"
+                    class="sidebar-active flex items-center px-4 py-3 text-sm font-bold rounded-xl transition">
+                    <i class="fas fa-plus-circle mr-3 text-lg"></i> Agendar Consulta
+                </a>
+                <a href="extratocliente.html"
+                    class="sidebar-link flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-xl transition">
+                    <i class="fas fa-file-invoice-dollar mr-3 text-lg"></i> Extrato
+                </a>
+                <a href="login.html"
+                    class="sidebar-link flex items-center px-4 py-3 text-sm font-medium text-red-500 hover:text-red-700 rounded-xl transition mt-auto">
+                    <i class="fas fa-sign-out-alt mr-3 text-lg"></i> Sair
+                </a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-10">
+            <div class="mb-10">
+                <h1 class="text-3xl font-black text-gray-800 tracking-tight">Novo Agendamento</h1>
+                <p class="text-gray-500">Selecione o serviço e o melhor horário para você.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <form id="appointment-form" class="lg:col-span-1 space-y-6">
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                        <label class="block text-sm font-bold text-gray-700 mb-4 uppercase tracking-wider text-xs">1.
+                            Escolha o Serviço</label>
+                        <select id="service-type"
+                            class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-green-600 transition font-medium text-gray-700">
+                            <option value="Pilates Clínico">Pilates Clínico</option>
+                            <option value="Fisioterapia">Fisioterapia Traumato-Ortopédica</option>
+                            <option value="Liberação Miofascial">Liberação Miofascial</option>
+                            <option value="Avaliação">Avaliação Inicial</option>
+                        </select>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                        <label class="block text-sm font-bold text-gray-700 mb-4 uppercase tracking-wider text-xs">2.
+                            Profissional</label>
+                        <div id="professionals-list" class="space-y-3">
+                            <p class="text-xs text-gray-400 italic">Carregando profissionais...</p>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                        <label class="block text-sm font-bold text-gray-700 mb-6 uppercase tracking-wider text-xs">3.
+                            Selecione a Data e Horário</label>
+
+                        <div class="mb-8">
+                             <input type="date" id="appointment-date" required onchange="updateAvailability()"
+                                class="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl outline-none focus:border-green-600 transition font-medium text-gray-700">
+                        </div>
+
+                        <div id="time-slots-container" class="grid grid-cols-3 md:grid-cols-4 gap-3">
+                            <!-- Horários serão gerados via JS -->
+                        </div>
+
+                        <button type="button" onclick="handleBooking()"
+                            class="w-full mt-10 bg-green-700 text-white font-black py-4 rounded-2xl hover:bg-green-800 transition shadow-xl shadow-green-100 uppercase tracking-widest">
+                            Confirmar Agendamento
+                        </button>
+                        <p id="booking-feedback" class="text-center mt-4 hidden"></p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <footer class="bg-gray-900 text-gray-300 pt-12 pb-8 mt-0">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4 uppercase font-bold">RENOVAR</h4>
+                <p class="text-sm leading-relaxed">
+                    Sua clínica de confiança para Pilates e Fisioterapia. Transformando vidas através do movimento
+                    consciente e reabilitação personalizada.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">Links Úteis</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition">Dúvidas Frequentes</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Política de Privacidade</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Trabalhe Conosco</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Blog da Saúde</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4 font-bold">Unidade Paulo Afonso</h4>
+                <p class="text-sm">Rua Otaviano Leandro de Moraes 165, Centro.</p>
+                <p class="text-sm mt-1">Empresarial Star Coworking</p>
+                <p class="text-sm mt-1 font-bold">Paulo Afonso - BA</p>
+                <p class="text-sm font-bold text-green-400 mt-4">
+                    <i class="fab fa-whatsapp"></i> +55 75 98846-6843
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">Siga-nos</h4>
+                <div class="flex space-x-6">
+                    <a href="https://www.instagram.com/pilates.renovar?igsh=MWIwdmF0b2prYmgwMQ==" target="_blank"
+                        class="text-3xl hover:text-pink-500 transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5575988466843" target="_blank"
+                        class="text-3xl hover:text-green-500 transition duration-300">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                <p class="text-xs mt-6 text-gray-500 italic font-medium">Agende sua aula experimental!</p>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-xs text-gray-500">
+            <p>&copy; 2026 Pilates RENOVAR. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let selectedTimeSlot = '';
+        let selectedDoctorId = '';
+
+        // Gerar slots de horários automaticamente (07:00 às 18:00, 60 min)
+        function generateTimeSlots() {
+            const container = document.getElementById('time-slots-container');
+            container.innerHTML = '';
+            for (let hour = 7; hour <= 17; hour++) {
+                const time = `${hour.toString().padStart(2, '0')}:00`;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'time-slot border border-gray-100 py-3 rounded-xl text-sm font-bold text-gray-600 transition disabled:opacity-20 disabled:cursor-not-allowed';
+                btn.innerText = time;
+                btn.id = `slot-${time}`;
+                btn.onclick = () => selectTime(btn);
+                container.appendChild(btn);
+            }
+        }
+
+        function selectTime(btn) {
+            document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('time-selected'));
+            btn.classList.add('time-selected');
+            selectedTimeSlot = btn.innerText;
+        }
+
+        async function fetchProfessionals() {
+            try {
+                const res = await fetch('http://localhost:3000/professionals');
+                const data = await res.json();
+                if (data.success) {
+                    const list = document.getElementById('professionals-list');
+                    list.innerHTML = '';
+                    data.data.forEach((prof, index) => {
+                        const label = document.createElement('label');
+                        label.className = `flex items-center p-3 border rounded-2xl cursor-pointer transition ${index === 0 ? 'border-green-600 bg-green-50' : 'border-gray-100 hover:bg-gray-50'}`;
+                        label.innerHTML = `
+                            <input type="radio" name="doctor" value="${prof.id}" class="hidden" ${index === 0 ? 'checked' : ''} onchange="handleProfChange(this)">
+                            <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(prof.name)}&background=2D5A27&color=fff" class="w-10 h-10 rounded-full mr-3">
+                            <div>
+                                <p class="text-sm font-bold text-gray-800">${prof.name}</p>
+                                <p class="text-xs text-green-600 uppercase font-bold">Profissional</p>
+                            </div>
+                            <i class="fas fa-check-circle ml-auto ${index === 0 ? 'text-green-600' : 'text-transparent'}"></i>
+                        `;
+                        list.appendChild(label);
+                        if (index === 0) selectedDoctorId = prof.id;
+                    });
+                }
+            } catch (err) { console.error(err); }
+        }
+
+        function handleProfChange(input) {
+            selectedDoctorId = input.value;
+            // Atualizar estilos visuais dos labels
+            document.querySelectorAll('#professionals-list label').forEach(l => {
+                l.classList.remove('border-green-600', 'bg-green-50');
+                l.classList.add('border-gray-100');
+                l.querySelector('i').classList.add('text-transparent');
+                l.querySelector('i').classList.remove('text-green-600');
+            });
+            const parent = input.parentElement;
+            parent.classList.add('border-green-600', 'bg-green-50');
+            parent.classList.remove('border-gray-100');
+            parent.querySelector('i').classList.add('text-green-600');
+            parent.querySelector('i').classList.remove('text-transparent');
+            
+            updateAvailability();
+        }
+
+        async function updateAvailability() {
+            const date = document.getElementById('appointment-date').value;
+            if (!date || !selectedDoctorId) return;
+
+            // Reset slots
+            document.querySelectorAll('.time-slot').forEach(btn => {
+                btn.disabled = false;
+                btn.classList.remove('time-selected');
+            });
+            selectedTimeSlot = '';
+
+            try {
+                const res = await fetch(`http://localhost:3000/appointments/availability?doctorId=${selectedDoctorId}&date=${date}`);
+                const data = await res.json();
+                if (data.success) {
+                    data.occupiedSlots.forEach(time => {
+                        const btn = document.getElementById(`slot-${time}`);
+                        if (btn) btn.disabled = true;
+                    });
+                }
+            } catch (err) { console.error(err); }
+        }
+
+        async function handleBooking() {
+            const userStr = localStorage.getItem('user');
+            if (!userStr) { window.location.href = 'login.html'; return; }
+            const user = JSON.parse(userStr);
+
+            const service = document.getElementById('service-type').value;
+            const date = document.getElementById('appointment-date').value;
+            const feedback = document.getElementById('booking-feedback');
+
+            if (!date || !selectedTimeSlot || !selectedDoctorId) {
+                alert('Preencha todos os campos e selecione um horário!');
+                return;
+            }
+
+            const scheduled_at = `${date}T${selectedTimeSlot}:00`;
+
+            try {
+                const response = await fetch('http://localhost:3000/appointments', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        client_id: user.id,
+                        doctor_id: selectedDoctorId,
+                        service_type: service,
+                        scheduled_at: scheduled_at,
+                        notes: ''
+                    })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    feedback.innerText = 'Consulta agendada com sucesso!';
+                    feedback.classList.remove('hidden', 'text-red-500');
+                    feedback.className = 'text-center mt-4 text-green-600 font-bold';
+                    setTimeout(() => window.location.href = 'areaclienta.html', 2000);
+                } else {
+                    feedback.innerText = 'Erro: ' + data.message;
+                    feedback.classList.remove('hidden');
+                    feedback.className = 'text-center mt-4 text-red-500 font-bold';
+                }
+            } catch (err) { console.error(err); }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                const user = JSON.parse(userStr);
+                document.getElementById('user-name-header').innerText = user.name;
+                document.getElementById('user-img-header').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=2D5A27&color=fff`;
+            }
+            generateTimeSlots();
+            fetchProfessionals();
+        });
+    </script>
+</body>
+
+</html>

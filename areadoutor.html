@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Profissional - Pilates RENOVAR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --renovar-primary: #2D5A27;
+        }
+
+        .sidebar-link:hover {
+            background-color: #f0fdf4;
+            color: var(--renovar-primary);
+        }
+
+        .sidebar-active {
+            background-color: #f0fdf4;
+            color: var(--renovar-primary);
+            border-left: 4px solid var(--renovar-primary);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="areadoutor.html" class="flex-shrink-0 flex items-center hover:opacity-80 transition">
+                    <span class="text-2xl font-bold text-green-800 tracking-tighter">RENOVAR<span
+                            class="text-green-500">.</span></span>
+                </a>
+
+                <div class="hidden md:flex space-x-8 font-medium text-gray-600">
+                    <a href="planos-pacotes.html" class="hover:text-green-700 transition">Planos e Pacotes</a>
+                    <a href="sobreempresa.html" class="hover:text-green-700 transition">Sobre</a>
+                    <a href="estrutura.html" class="hover:text-green-700 transition">Unidades</a>
+                    <a href="contatos.html" class="hover:text-green-700 transition">Contato</a>
+                </div>
+
+                <div class="flex items-center space-x-4 border-l pl-6 border-gray-100">
+                    <a href="segurancadoutor.html" class="text-gray-400 hover:text-green-700">
+                        <i class="fas fa-cog text-xl"></i>
+                    </a>
+                    <a href="perfildoutor.html"
+                        class="flex items-center space-x-3 text-right hover:opacity-80 transition">
+                        <div class="hidden sm:block leading-none">
+                            <p class="text-sm font-black text-gray-800 italic">Dr. Othon Gustavo</p>
+                            <p class="text-[10px] text-green-600 font-bold uppercase tracking-widest">Fisioterapeuta</p>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name=Othon+Gustavo&background=2D5A27&color=fff"
+                            class="w-10 h-10 rounded-full border-2 border-green-50 shadow-sm">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex flex-1 max-w-7xl mx-auto w-full">
+        <aside class="w-64 bg-white shadow-sm hidden md:flex flex-col border-r border-gray-100 mt-6 rounded-tr-3xl">
+            <nav class="mt-10 flex-1 px-4 space-y-2">
+                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest px-4 mb-4">Gestão Clínica</p>
+
+                <a href="areadoutor.html"
+                    class="sidebar-active flex items-center px-4 py-3 text-sm font-bold rounded-xl transition">
+                    <i class="fas fa-calendar-check mr-3 text-lg"></i> Ver Agenda
+                </a>
+
+                <a href="areadoutorprontuarios.html"
+                    class="sidebar-link flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-xl transition">
+                    <i class="fas fa-notes-medical mr-3 text-lg"></i> Prontuários
+                </a>
+
+                <a href="areardoutorfinaceiro.html"
+                    class="sidebar-link flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-xl transition">
+                    <i class="fas fa-chart-line mr-3 text-lg"></i> Financeiro
+                </a>
+            </nav>
+
+            <div class="p-6 border-t border-gray-50">
+                <a href="login.html"
+                    class="flex items-center px-4 py-2 text-sm font-bold text-red-500 hover:bg-red-50 rounded-xl transition">
+                    <i class="fas fa-power-off mr-3"></i> Sair do Painel
+                </a>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-10">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
+                <div>
+                    <h1 class="text-3xl font-black text-gray-800 tracking-tight">Agenda do Dia</h1>
+                    <p class="text-gray-500 italic">Hoje, 11 de Março de 2026</p>
+                </div>
+                <div class="flex gap-4">
+                    <div class="bg-white px-4 py-2 rounded-xl shadow-sm border border-gray-100 text-center">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase">Atendimentos</p>
+                        <p class="text-xl font-black text-green-700">12</p>
+                    </div>
+                    <div class="bg-white px-4 py-2 rounded-xl shadow-sm border border-gray-100 text-center">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase">Restantes</p>
+                        <p class="text-xl font-black text-orange-500">04</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+
+                <div
+                    class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-6 hover:border-green-300 transition group">
+                    <div class="text-center md:border-r md:pr-6 border-gray-100">
+                        <p class="text-2xl font-black text-gray-800">08:00</p>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase">Início</p>
+                    </div>
+
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2">
+                            <h3 class="text-lg font-bold text-gray-800">Maria Oliveira</h3>
+                            <span
+                                class="bg-green-100 text-green-700 text-[10px] font-black px-2 py-0.5 rounded uppercase italic">Confirmado</span>
+                        </div>
+                        <p class="text-sm text-gray-500 font-medium">Pilates Individual - <span
+                                class="text-green-700">Plano Semestral</span></p>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <a href="areadoutorprontuariospaciente.html"
+                            class="bg-gray-900 text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-gray-800 transition">
+                            <i class="fas fa-file-medical mr-1"></i> Abrir Prontuário
+                        </a>
+                        <button class="bg-gray-50 text-gray-400 p-2 rounded-xl hover:text-green-700 transition">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-green-700 p-6 rounded-3xl shadow-xl shadow-green-100 flex flex-col md:flex-row items-center gap-6 text-white transform scale-[1.02]">
+                    <div class="text-center md:border-r md:pr-6 border-green-600">
+                        <p class="text-2xl font-black">09:30</p>
+                        <p class="text-[10px] font-bold text-green-200 uppercase tracking-widest italic">Agora</p>
+                    </div>
+
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold">José Roberto</h3>
+                        <p class="text-sm text-green-100 font-medium">Fisioterapia Traumato-Ortopédica (Sessão 04/10)
+                        </p>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <button
+                            class="bg-white text-green-700 px-4 py-2 rounded-xl text-xs font-bold shadow-md hover:bg-green-50 transition">
+                            Finalizar Sessão
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-6 opacity-60">
+                    <div class="text-center md:border-r md:pr-6 border-gray-100">
+                        <p class="text-2xl font-black text-gray-400">11:00</p>
+                        <p class="text-[10px] font-bold text-gray-300 uppercase">Pendente</p>
+                    </div>
+
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold text-gray-400">Ana Clara Souza</h3>
+                        <p class="text-sm text-gray-300 font-medium">Avaliação Inicial - Pilates Clínico</p>
+                    </div>
+
+                    <button class="border border-gray-200 text-gray-400 px-4 py-2 rounded-xl text-xs font-bold">
+                        Aguardando
+                    </button>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <footer class="bg-gray-900 text-gray-300 pt-12 pb-8 mt-0">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4 uppercase font-bold">RENOVAR</h4>
+                <p class="text-sm leading-relaxed">
+                    Sua clínica de confiança para Pilates e Fisioterapia. Transformando vidas através do movimento
+                    consciente e reabilitação personalizada.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">Links Úteis</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition">Dúvidas Frequentes</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Política de Privacidade</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Trabalhe Conosco</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Blog da Saúde</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4 font-bold">Unidade Paulo Afonso</h4>
+                <p class="text-sm">Rua Otaviano Leandro de Moraes 165, Centro.</p>
+                <p class="text-sm mt-1">Empresarial Star Coworking</p>
+                <p class="text-sm mt-1 font-bold">Paulo Afonso - BA</p>
+                <p class="text-sm font-bold text-green-400 mt-4">
+                    <i class="fab fa-whatsapp"></i> +55 75 98846-6843
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">Siga-nos</h4>
+                <div class="flex space-x-6">
+                    <a href="https://www.instagram.com/pilates.renovar?igsh=MWIwdmF0b2prYmgwMQ==" target="_blank"
+                        class="text-3xl hover:text-pink-500 transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5575988466843" target="_blank"
+                        class="text-3xl hover:text-green-500 transition duration-300">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                <p class="text-xs mt-6 text-gray-500 italic font-medium">Agende sua aula experimental!</p>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-xs text-gray-500">
+            <p>&copy; 2026 Pilates RENOVAR. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

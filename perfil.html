@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Pilates RENOVAR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --renovar-primary: #2D5A27;
+        }
+
+        .form-input {
+            @apply w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-green-600 focus:ring-2 focus:ring-green-50 transition font-medium text-gray-700;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="areaclienta.html" class="flex-shrink-0 flex items-center hover:opacity-80 transition">
+                    <span class="text-2xl font-bold text-green-800 tracking-tighter">RENOVAR<span
+                            class="text-green-500">.</span></span>
+                </a>
+                <div class="hidden md:flex space-x-8 font-medium text-gray-600">
+                    <a href="#" class="hover:text-green-700 transition">Planos e Pacotes</a>
+                    <a href="#" class="hover:text-green-700 transition">Sobre</a>
+                    <a href="#" class="hover:text-green-700 transition">Unidades</a>
+                    <a href="#" class="hover:text-green-700 transition">Contato</a>
+                </div>
+                <div class="flex items-center space-x-4 border-l pl-6 border-gray-100">
+                    <div class="flex items-center space-x-3 text-right">
+                        <div class="hidden sm:block leading-none">
+                            <p id="user-name-header" class="text-sm font-black text-gray-800 italic">Carregando...</p>
+                            <p class="text-[10px] text-green-600 font-bold uppercase tracking-widest">Meu Perfil</p>
+                        </div>
+                        <img id="user-img-header" src="https://ui-avatars.com/api/?name=User&background=2D5A27&color=fff"
+                            class="w-10 h-10 rounded-full border-2 border-green-600 shadow-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex flex-1 max-w-7xl mx-auto w-full">
+        <aside class="w-64 bg-white shadow-sm hidden md:flex flex-col border-r border-gray-100 mt-6 rounded-tr-3xl">
+            <nav class="mt-10 flex-1 px-4 space-y-2">
+                <a href="areaclienta.html"
+                    class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-green-50 rounded-xl transition">
+                    <i class="fas fa-home mr-3 text-lg"></i> Início
+                </a>
+                <a href="perfil.html"
+                    class="bg-green-50 text-green-800 flex items-center px-4 py-3 text-sm font-bold rounded-xl border-l-4 border-green-700">
+                    <i class="fas fa-user-circle mr-3 text-lg"></i> Dados do Perfil
+                </a>
+                <a href="seguranca.html"
+                    class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-green-50 rounded-xl transition">
+                    <i class="fas fa-shield-alt mr-3 text-lg"></i> Segurança
+                </a>
+                <a href="#"
+                    class="flex items-center px-4 py-3 text-sm font-medium text-gray-600 hover:bg-green-50 rounded-xl transition">
+                    <i class="fas fa-bell mr-3 text-lg"></i> Notificações
+                </a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-6 md:p-10">
+            <div class="flex flex-col md:flex-row items-center gap-8 mb-12">
+                <div class="relative">
+                    <img id="profile-img-large" src="https://ui-avatars.com/api/?name=User&background=2D5A27&color=fff&size=150"
+                        class="w-32 h-32 rounded-3xl shadow-xl border-4 border-white">
+                    <button
+                        class="absolute -bottom-2 -right-2 bg-green-700 text-white p-3 rounded-xl shadow-lg hover:scale-110 transition">
+                        <i class="fas fa-pen text-xs"></i>
+                    </button>
+                </div>
+                <div class="text-center md:text-left">
+                    <h1 id="user-main-name" class="text-3xl font-black text-gray-800 tracking-tight">Carregando...</h1>
+                    <p id="user-main-email" class="text-gray-500 font-medium italic">...</p>
+                    <div class="mt-3 flex gap-2 justify-center md:justify-start">
+                        <span id="user-role-badge"
+                            class="bg-green-100 text-green-700 text-[10px] font-black px-3 py-1 rounded-full uppercase italic">Paciente</span>
+                        <span id="user-id-badge"
+                            class="bg-gray-100 text-gray-500 text-[10px] font-black px-3 py-1 rounded-full uppercase italic">ID: ...</span>
+                    </div>
+                </div>
+            </div>
+
+            <form class="space-y-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                    <h3 class="text-sm font-black text-green-700 uppercase tracking-widest mb-6 flex items-center">
+                        <i class="fas fa-id-card mr-2"></i> Informações Cadastrais
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-black text-gray-400 uppercase mb-2">Nome Completo</label>
+                            <input type="text" id="input-name" value="..."
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-green-600 transition font-bold text-gray-700">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black text-gray-400 uppercase mb-2">CPF</label>
+                            <input type="text" id="input-cpf" value="..."
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-400 font-bold"
+                                disabled>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black text-gray-400 uppercase mb-2">E-mail</label>
+                            <input type="email" id="input-email" value="..."
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-green-600 transition font-bold text-gray-700">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black text-gray-400 uppercase mb-2">WhatsApp</label>
+                            <input type="text" id="input-whatsapp" value="..."
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-green-600 transition font-bold text-gray-700">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                    <h3 class="text-sm font-black text-red-600 uppercase tracking-widest mb-6 flex items-center">
+                        <i class="fas fa-heartbeat mr-2"></i> Dados de Saúde e Emergência
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-black text-gray-400 uppercase mb-2">Tipo Sanguíneo</label>
+                            <select
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-green-600 transition font-bold text-gray-700">
+                                <option>A+</option>
+                                <option>O+</option>
+                                <option>AB-</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-black text-gray-400 uppercase mb-2">Contato de Emergência
+                                (Nome/Tel)</label>
+                            <input type="text" value="Maria Souza - (75) 99999-0000"
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-green-600 transition font-bold text-gray-700">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-black text-gray-400 uppercase mb-2">Alergias ou Observações
+                                Médicas</label>
+                            <textarea rows="2"
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-green-600 transition font-bold text-gray-700"
+                                placeholder="Ex: Alergia a Dipirona, Hérnia de Disco L4..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 p-8 rounded-3xl shadow-xl text-white">
+                    <h3 class="text-sm font-black text-green-400 uppercase tracking-widest mb-6">Preferências de
+                        Notificação</h3>
+                    <div class="space-y-4">
+                        <label class="flex items-center justify-between cursor-pointer">
+                            <span class="text-sm font-bold">Receber lembretes via WhatsApp</span>
+                            <input type="checkbox" checked class="w-5 h-5 accent-green-500">
+                        </label>
+                        <label class="flex items-center justify-between cursor-pointer border-t border-gray-800 pt-4">
+                            <span class="text-sm font-bold">Relatórios mensais de evolução por E-mail</span>
+                            <input type="checkbox" class="w-5 h-5 accent-green-500">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-4">
+                    <button type="button"
+                        class="px-8 py-3 rounded-xl font-bold text-gray-400 hover:text-gray-600 transition">Cancelar</button>
+                    <button type="submit"
+                        class="bg-green-700 text-white px-10 py-3 rounded-xl font-black shadow-xl shadow-green-100 hover:bg-green-800 transition uppercase tracking-widest">Salvar
+                        Alterações</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <footer class="bg-gray-900 text-gray-300 pt-12 pb-8 mt-0">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4 uppercase font-bold">RENOVAR</h4>
+                <p class="text-sm leading-relaxed">
+                    Sua clínica de confiança para Pilates e Fisioterapia. Transformando vidas através do movimento
+                    consciente e reabilitação personalizada.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">Links Úteis</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-green-400 transition">Dúvidas Frequentes</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Política de Privacidade</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Trabalhe Conosco</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Blog da Saúde</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4 font-bold">Unidade Paulo Afonso</h4>
+                <p class="text-sm">Rua Otaviano Leandro de Moraes 165, Centro.</p>
+                <p class="text-sm mt-1">Empresarial Star Coworking</p>
+                <p class="text-sm mt-1 font-bold">Paulo Afonso - BA</p>
+                <p class="text-sm font-bold text-green-400 mt-4">
+                    <i class="fab fa-whatsapp"></i> +55 75 98846-6843
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4">Siga-nos</h4>
+                <div class="flex space-x-6">
+                    <a href="https://www.instagram.com/pilates.renovar?igsh=MWIwdmF0b2prYmgwMQ==" target="_blank"
+                        class="text-3xl hover:text-pink-500 transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/5575988466843" target="_blank"
+                        class="text-3xl hover:text-green-500 transition duration-300">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                <p class="text-xs mt-6 text-gray-500 italic font-medium">Agende sua aula experimental!</p>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-xs text-gray-500">
+            <p>&copy; 2026 Pilates RENOVAR. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const userStr = localStorage.getItem('user');
+            if (!userStr) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const storedUser = JSON.parse(userStr);
+            console.log('Carregando perfil para ID:', storedUser.id);
+
+            try {
+                const response = await fetch(`http://localhost:3000/users/${storedUser.id}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    const user = data.user;
+                    
+                    // Atualizar Header
+                    document.getElementById('user-name-header').innerText = user.name;
+                    document.getElementById('user-img-header').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=2D5A27&color=fff`;
+                    
+                    // Atualizar Infos Principais
+                    document.getElementById('user-main-name').innerText = user.name;
+                    document.getElementById('user-main-email').innerText = user.email;
+                    document.getElementById('user-role-badge').innerText = user.role === 'client' ? 'Paciente' : 'Profissional';
+                    document.getElementById('user-id-badge').innerText = `ID: #RE-${user.id}`;
+                    document.getElementById('profile-img-large').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=2D5A27&color=fff&size=150`;
+
+                    // Atualizar Formulário
+                    document.getElementById('input-name').value = user.name;
+                    document.getElementById('input-cpf').value = user.cpf;
+                    document.getElementById('input-email').value = user.email;
+                    document.getElementById('input-whatsapp').value = user.whatsapp || '';
+                }
+            } catch (err) {
+                console.error('Erro ao buscar dados:', err);
+            }
+        });
+    </script>
+</body>
+
+</html>
