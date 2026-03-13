@@ -1,0 +1,55 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.css",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/login",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/register",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/users/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/appointments(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/professionals",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/medical-records(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/payments",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/dashboard-stats",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
