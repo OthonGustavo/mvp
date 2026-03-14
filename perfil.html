@@ -236,7 +236,7 @@
             console.log('Carregando perfil para ID:', storedUser.id);
 
             try {
-                const response = await fetch(`http://localhost:3000/users/${storedUser.id}`);
+                const response = await fetch(`/users/${storedUser.id}`);
                 const data = await response.json();
 
                 if (data.success) {

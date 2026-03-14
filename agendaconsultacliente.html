@@ -220,7 +220,7 @@
 
         async function fetchProfessionals() {
             try {
-                const res = await fetch('http://localhost:3000/professionals');
+                const res = await fetch('/professionals');
                 const data = await res.json();
                 if (data.success) {
                     const list = document.getElementById('professionals-list');
@@ -274,7 +274,7 @@
             selectedTimeSlot = '';
 
             try {
-                const res = await fetch(`http://localhost:3000/appointments/availability?doctorId=${selectedDoctorId}&date=${date}`);
+                const res = await fetch(`/appointments/availability?doctorId=${selectedDoctorId}&date=${date}`);
                 const data = await res.json();
                 if (data.success) {
                     data.occupiedSlots.forEach(time => {
@@ -302,7 +302,7 @@
             const scheduled_at = `${date}T${selectedTimeSlot}:00`;
 
             try {
-                const response = await fetch('http://localhost:3000/appointments', {
+                const response = await fetch('/appointments', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
