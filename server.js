@@ -25,6 +25,11 @@ pool.connect((err, client, release) => {
     release();
 });
 
+// Adicionar listener de erro global no pool
+pool.on('error', (err) => {
+    console.error('ERRO INESPERADO NO CLIENTE DO BANCO:', err);
+});
+
 // Rota de Registro
 app.post('/register', async (req, res) => {
     const { name, email, password, role, cpf, whatsapp } = req.body;
@@ -62,6 +67,7 @@ app.post('/login', async (req, res) => {
     console.log(`[LOGIN ATTEMPT] Email: ${email}, Role: ${role}`);
 
     try {
+        console.log(`[QUERY] SELECT * FROM users WHERE email='${email}' AND role='${role}'`);
         const query = 'SELECT * FROM users WHERE email = $1 AND role = $2';
         const result = await pool.query(query, [email, role]);
 
@@ -238,7 +244,18 @@ app.get('/stats', async (req, res) => {
     }
 });
 
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor RENOVAR rodando na porta ${PORT}`);
-});
+const PORT = process.env.PORT || 3000;
+
+// Só inicia o servidor se não estiver na Vercel (que usa serverless functions)
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+    const server = app.listen(PORT, () => {
+        console.log(`Servidor RENOVAR rodando localmente na porta ${PORT}`);
+    });
+
+    server.on('error', (err) => {
+        console.error('ERRO NO SERVIDOR HTTP:', err);
+    });
+}
+
+// Exportar para a Vercel
+module.exports = app;
