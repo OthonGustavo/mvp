@@ -147,6 +147,30 @@ app.get('/professionals', async (req, res) => {
     }
 });
 
+// Listar todos os pacientes (clientes)
+app.get('/patients', async (req, res) => {
+    try {
+        const result = await pool.query("SELECT id, name, cpf, email FROM users WHERE role = 'client'");
+        res.json({ success: true, data: result.rows });
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Erro ao buscar pacientes' });
+    }
+});
+
+// Detalhes de um paciente específico
+app.get('/patient/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await pool.query("SELECT id, name, cpf, email FROM users WHERE id = $1", [id]);
+        if (result.rows.length === 0) {
+            return res.status(404).json({ success: false, message: 'Paciente não encontrado' });
+        }
+        res.json({ success: true, data: result.rows[0] });
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Erro ao buscar paciente' });
+    }
+});
+
 // --- AGENDAMENTOS ---
 
 // Buscar agendamentos (opcionalmente filtrados por cliente)
@@ -319,6 +343,20 @@ app.post('/medical-records', async (req, res) => {
 });
 
 // --- PAGAMENTOS ---
+
+app.get('/all-payments', async (req, res) => {
+    try {
+        const result = await pool.query(`
+            SELECT p.*, u.name as client_name 
+            FROM payments p 
+            LEFT JOIN users u ON p.user_id = u.id 
+            ORDER BY p.due_date DESC
+        `);
+        res.json({ success: true, data: result.rows });
+    } catch (err) {
+        res.status(500).json({ success: false, message: 'Erro ao buscar todos pagamentos' });
+    }
+});
 
 app.get('/payments/:userId', async (req, res) => {
     try {

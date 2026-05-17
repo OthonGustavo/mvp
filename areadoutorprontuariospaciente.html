@@ -85,99 +85,140 @@
         </aside>
 
         <main class="flex-1 p-6 md:p-10">
-            <div
-                class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 mb-8 flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-6">
-                    <img src="https://ui-avatars.com/api/?name=Maria+Oliveira&background=E8F5E9&color=2D5A27&size=100"
-                        class="w-20 h-20 rounded-2xl shadow-sm">
-                    <div>
-                        <h1 class="text-2xl font-black text-gray-800">Maria Oliveira</h1>
-                        <p class="text-sm text-gray-500 font-medium italic">Feminino, 34 anos • Plano Semestral 2x</p>
-                        <div class="mt-2 flex gap-2">
-                            <span
-                                class="bg-red-50 text-red-600 text-[10px] font-black px-2 py-0.5 rounded uppercase italic">Hérnia
-                                de Disco L4-L5</span>
-                            <span
-                                class="bg-green-100 text-green-700 text-[10px] font-black px-2 py-0.5 rounded uppercase">Ativo</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex gap-3">
-                    <button
-                        class="bg-gray-100 text-gray-700 px-4 py-2 rounded-xl text-xs font-bold hover:bg-gray-200 transition"><i
-                            class="fas fa-print mr-1"></i> Imprimir</button>
-                    <button
-                        class="bg-green-700 text-white px-6 py-2 rounded-xl text-xs font-bold shadow-lg hover:bg-green-800 transition"><i
-                            class="fas fa-edit mr-1"></i> Editar Ficha</button>
-                </div>
+    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 mb-8 flex flex-col md:flex-row justify-between items-center gap-6" id="patient-header">
+        <div class="flex items-center gap-6">
+            <div class="w-20 h-20 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400">...</div>
+            <div>
+                <h1 class="text-2xl font-black text-gray-800">Carregando...</h1>
             </div>
-
-            <div class="flex border-b border-gray-100 mb-8 gap-8">
-                <button class="tab-active py-4 text-xs font-black uppercase tracking-widest">Evolução Clínica</button>
-                <button
-                    class="py-4 text-xs font-bold text-gray-400 uppercase tracking-widest hover:text-green-700 transition">Anamnese
-                    / Avaliação</button>
-                <button
-                    class="py-4 text-xs font-bold text-gray-400 uppercase tracking-widest hover:text-green-700 transition">Exames
-                    e Anexos</button>
-            </div>
-
-            <div class="space-y-8">
-                <div
-                    class="bg-green-50 border-2 border-dashed border-green-200 p-6 rounded-3xl text-center cursor-pointer hover:bg-green-100 transition group">
-                    <i class="fas fa-plus-circle text-2xl text-green-700 mb-2 group-hover:scale-110 transition"></i>
-                    <p class="text-sm font-black text-green-700 uppercase tracking-tighter">Registrar Nova Evolução
-                        (Sessão de Hoje)</p>
-                </div>
-
-                <div class="relative pl-8 border-l-2 border-gray-100 space-y-10">
-
-                    <div class="relative">
-                        <div
-                            class="absolute -left-10 top-0 w-4 h-4 rounded-full bg-green-700 border-4 border-white shadow-sm">
-                        </div>
-                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="text-xs font-black text-gray-400 uppercase tracking-widest">10 Março, 2026
-                                    • 08:00h</span>
-                                <span class="text-[10px] font-bold text-green-600 italic">Sessão 12/24</span>
-                            </div>
-                            <h4 class="font-bold text-gray-800 mb-2 italic underline text-sm">Pilates Clínico</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">
-                                Paciente relatou leve melhora na dor lombar (EVA 3). Realizamos fortalecimento de CORE
-                                com foco em estabilização segmentar. Utilizado Reformer (Short Box Series). Boa execução
-                                e controle respiratório. Mantivemos liberação miofascial em glúteo médio ao final.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="relative">
-                        <div
-                            class="absolute -left-10 top-0 w-4 h-4 rounded-full bg-gray-200 border-4 border-white shadow-sm">
-                        </div>
-                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 opacity-80">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="text-xs font-black text-gray-400 uppercase tracking-widest">03 Março, 2026
-                                    • 08:00h</span>
-                                <span class="text-[10px] font-bold text-gray-400 italic text-xs">Sessão 11/24</span>
-                            </div>
-                            <h4 class="font-bold text-gray-800 mb-2 italic underline text-sm">Pilates Clínico</h4>
-                            <p class="text-sm text-gray-600 leading-relaxed">
-                                Paciente apresentou-se mais fadigada. Optamos por mobilização de coluna em flexão e
-                                extensão (Cat Stretch no Cadillac). Evolução positiva na amplitude de movimento de
-                                membros inferiores.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </main>
+        </div>
+    </div>
+    <div class="flex border-b border-gray-100 mb-8 gap-8">
+        <button class="tab-active py-4 text-xs font-black uppercase tracking-widest">Evolução Clínica</button>
+    </div>
+    <div class="space-y-8">
+        <div onclick="addEvolution()" class="bg-green-50 border-2 border-dashed border-green-200 p-6 rounded-3xl text-center cursor-pointer hover:bg-green-100 transition group">
+            <i class="fas fa-plus-circle text-2xl text-green-700 mb-2 group-hover:scale-110 transition"></i>
+            <p class="text-sm font-black text-green-700 uppercase tracking-tighter">Registrar Nova Evolução</p>
+        </div>
+        <div id="records-list" class="relative pl-8 border-l-2 border-gray-100 space-y-10">
+            <p class="text-gray-400 italic py-4">Carregando evolução clínica...</p>
+        </div>
+    </div>
+</main>
     </div>
 
     <app-footer></app-footer>
     <script src="footer.js"></script>
+<script>
+    let currentUser = null;
+    let patientId = null;
 
+    document.addEventListener('DOMContentLoaded', () => {
+        const userStr = localStorage.getItem('user');
+        if (!userStr) {
+            window.location.href = 'login.html';
+            return;
+        }
+        currentUser = JSON.parse(userStr);
+        if (currentUser.role !== 'doctor') {
+            window.location.href = 'areaclienta.html';
+            return;
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        patientId = urlParams.get('id');
+        if (!patientId) {
+            alert('Paciente não especificado!');
+            window.location.href = 'areadoutorprontuarios.html';
+            return;
+        }
+
+        fetchPatientData();
+        fetchMedicalRecords();
+    });
+
+    async function fetchPatientData() {
+        try {
+            const res = await fetch('/patient/' + patientId);
+            const data = await res.json();
+            if (data.success) {
+                const p = data.data;
+                document.getElementById('patient-header').innerHTML = `
+                    <div class="flex items-center gap-6">
+                        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&background=E8F5E9&color=2D5A27&size=100" class="w-20 h-20 rounded-2xl shadow-sm">
+                        <div>
+                            <h1 class="text-2xl font-black text-gray-800">${p.name}</h1>
+                            <p class="text-sm text-gray-500 font-medium italic">CPF: ${p.cpf || 'Não informado'} • ${p.email}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    async function fetchMedicalRecords() {
+        try {
+            const res = await fetch('/medical-records/' + patientId);
+            const data = await res.json();
+            const list = document.getElementById('records-list');
+            
+            if (data.success && data.data.length > 0) {
+                list.innerHTML = '';
+                data.data.forEach((r, idx) => {
+                    const date = new Date(r.created_at).toLocaleString('pt-BR');
+                    const isFirst = idx === 0;
+                    const dotClass = isFirst ? 'bg-green-700 border-white' : 'bg-gray-200 border-white';
+                    const boxClass = isFirst ? 'bg-white' : 'bg-white opacity-80';
+
+                    list.innerHTML += `
+                    <div class="relative">
+                        <div class="absolute -left-10 top-0 w-4 h-4 rounded-full ${dotClass} border-4 shadow-sm"></div>
+                        <div class="${boxClass} p-6 rounded-3xl shadow-sm border border-gray-100">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-xs font-black text-gray-400 uppercase tracking-widest">${date}</span>
+                                <span class="text-[10px] font-bold text-gray-400 italic">Dr(a) ${r.doctor_name || 'Profissional'}</span>
+                            </div>
+                            <p class="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">${r.evolution_text}</p>
+                        </div>
+                    </div>
+                    `;
+                });
+            } else {
+                list.innerHTML = '<p class="text-gray-400 italic py-4">Nenhuma evolução registrada.</p>';
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    async function addEvolution() {
+        const notes = prompt("Digite a evolução clínica do paciente:");
+        if (!notes || notes.trim() === "") return;
+
+        try {
+            const res = await fetch('/medical-records', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    client_id: patientId,
+                    doctor_id: currentUser.id,
+                    evolution_text: notes
+                })
+            });
+            const data = await res.json();
+            if (data.success) {
+                fetchMedicalRecords();
+            } else {
+                alert('Erro ao salvar evolução.');
+            }
+        } catch (err) {
+            alert('Erro de conexão.');
+        }
+    }
+</script>
 </body>
 
 </html>

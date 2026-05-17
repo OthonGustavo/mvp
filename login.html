@@ -124,6 +124,14 @@
     </main>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                const user = JSON.parse(userStr);
+                window.location.href = user.role === 'doctor' ? 'areadoutor.html' : 'areaclienta.html';
+            }
+        });
+
         let currentRole = 'patient';
 
         function setRole(role) {

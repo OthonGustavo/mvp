@@ -56,3 +56,24 @@ class AppFooter extends HTMLElement {
 }
 
 customElements.define('app-footer', AppFooter);
+
+// Global script to update the Navbar if user is logged in
+document.addEventListener('DOMContentLoaded', () => {
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+        try {
+            const user = JSON.parse(userStr);
+            const loginBtn = document.querySelector('a[href="login.html"]');
+            const registerBtn = document.querySelector('a[href="registro.html"]');
+            
+            if (loginBtn && !window.location.pathname.includes('login.html') && !window.location.pathname.includes('registro.html')) {
+                loginBtn.innerText = 'Meu Painel';
+                loginBtn.className = 'text-green-700 font-bold';
+                loginBtn.href = user.role === 'doctor' ? 'areadoutor.html' : 'areaclienta.html';
+            }
+            if (registerBtn && !window.location.pathname.includes('login.html') && !window.location.pathname.includes('registro.html')) {
+                registerBtn.style.display = 'none';
+            }
+        } catch(e) {}
+    }
+});

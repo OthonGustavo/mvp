@@ -130,6 +130,14 @@
     <script src="footer.js"></script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                const user = JSON.parse(userStr);
+                window.location.href = user.role === 'doctor' ? 'areadoutor.html' : 'areaclienta.html';
+            }
+        });
+
         let currentRole = 'client';
 
         function setRole(role) {

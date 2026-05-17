@@ -132,7 +132,7 @@
                             <th class="px-8 py-4 text-right">Ações</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-50">
+                    <tbody id="patients-list" class="divide-y divide-gray-50">
                         <tr class="hover:bg-gray-50 transition group">
                             <td class="px-8 py-5">
                                 <div class="flex items-center">
@@ -224,6 +224,68 @@
     <app-footer></app-footer>
     <script src="footer.js"></script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userStr = localStorage.getItem('user');
+            if (!userStr) {
+                window.location.href = 'login.html';
+                return;
+            }
+            const user = JSON.parse(userStr);
+            if (user.role !== 'doctor') {
+                window.location.href = 'areaclienta.html';
+                return;
+            }
+            
+            fetchPatients();
+        });
+
+        async function fetchPatients() {
+            try {
+                const response = await fetch('/patients');
+                const data = await response.json();
+                
+                const tbody = document.getElementById('patients-list');
+                if (data.success && data.data.length > 0) {
+                    tbody.innerHTML = '';
+                    data.data.forEach(patient => {
+                        const initials = patient.name.split(' ').map(n => n[0]).join('').substring(0,2).toUpperCase();
+                        
+                        const tr = document.createElement('tr');
+                        tr.className = 'hover:bg-gray-50 transition group';
+                        tr.innerHTML = `
+                            <td class="px-8 py-5">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center text-green-700 font-black mr-4">
+                                        ${initials}
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-black text-gray-800">${patient.name}</p>
+                                        <p class="text-xs text-gray-400">CPF: ${patient.cpf || 'Não informado'}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-8 py-5 text-sm text-gray-600 font-medium">${patient.email}</td>
+                            <td class="px-8 py-5">
+                                <span class="bg-green-100 text-green-700 text-[10px] font-black px-2 py-1 rounded uppercase">Ativo</span>
+                            </td>
+                            <td class="px-8 py-5 text-right">
+                                <a href="areadoutorprontuariospaciente.html?id=${patient.id}" class="bg-gray-900 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-green-700 transition inline-block">
+                                    <i class="fas fa-eye mr-1"></i> Abrir
+                                </a>
+                            </td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="4" class="text-center py-8 text-gray-400 italic">Nenhum paciente encontrado.</td></tr>';
+                }
+            } catch (err) {
+                console.error(err);
+                document.getElementById('patients-list').innerHTML = '<tr><td colspan="4" class="text-center py-8 text-red-500 font-bold">Erro ao carregar pacientes.</td></tr>';
+            }
+        }
+    </script>
 </body>
 
 </html>

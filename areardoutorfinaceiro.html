@@ -82,121 +82,150 @@
         </aside>
 
         <main class="flex-1 p-6 md:p-10">
-            <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
-                <div>
-                    <h1 class="text-3xl font-black text-gray-800 tracking-tight">Gestão Financeira</h1>
-                    <p class="text-gray-500 italic">Controle de receitas, despesas e fluxo de caixa.</p>
-                </div>
-                <div class="flex gap-3">
-                    <button
-                        class="bg-gray-100 text-gray-700 px-4 py-2 rounded-xl text-xs font-bold hover:bg-gray-200 transition">
-                        <i class="fas fa-download mr-2"></i> Relatório Mensal
-                    </button>
-                    <button
-                        class="bg-green-700 text-white px-6 py-2 rounded-xl text-xs font-bold shadow-lg shadow-green-100 hover:bg-green-800 transition">
-                        <i class="fas fa-plus mr-2"></i> Lançar Despesa
-                    </button>
-                </div>
-            </div>
+    <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
+        <div>
+            <h1 class="text-3xl font-black text-gray-800 tracking-tight">Gestão Financeira</h1>
+            <p class="text-gray-500 italic">Controle de receitas, despesas e fluxo de caixa.</p>
+        </div>
+        <div class="flex gap-3">
+            <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-xl text-xs font-bold hover:bg-gray-200 transition">
+                <i class="fas fa-download mr-2"></i> Relatório Mensal
+            </button>
+            <button onclick="addTransaction()" class="bg-green-700 text-white px-6 py-2 rounded-xl text-xs font-bold shadow-lg shadow-green-100 hover:bg-green-800 transition">
+                <i class="fas fa-plus mr-2"></i> Lançar Despesa/Receita
+            </button>
+        </div>
+    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-                    <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Receita Bruta (Março)
-                    </p>
-                    <h3 class="text-2xl font-black text-green-700">R$ 14.580,00</h3>
-                    <p class="text-[10px] text-green-500 mt-1 font-bold"><i class="fas fa-arrow-up mr-1"></i> 12% em
-                        relação a Fev</p>
-                </div>
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-                    <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Despesas Fixas</p>
-                    <h3 class="text-2xl font-black text-red-600">R$ 4.200,00</h3>
-                    <p class="text-[10px] text-gray-400 mt-1">Aluguel, Luz, Internet</p>
-                </div>
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-                    <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">A Receber (Pendentes)
-                    </p>
-                    <h3 class="text-2xl font-black text-orange-500">R$ 1.850,00</h3>
-                    <p class="text-[10px] text-orange-400 mt-1 font-bold">08 Pacientes pendentes</p>
-                </div>
-                <div class="bg-green-800 p-6 rounded-3xl shadow-xl text-white">
-                    <p class="text-[10px] font-black text-green-200 uppercase tracking-widest mb-2">Lucro Líquido</p>
-                    <h3 class="text-2xl font-black">R$ 10.380,00</h3>
-                    <p class="text-[10px] text-green-300 mt-1 italic">Margem de 71%</p>
-                </div>
-            </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10" id="finance-stats">
+        <p class="text-gray-400 italic">Calculando estatísticas...</p>
+    </div>
 
-            <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-                <div class="p-6 border-b border-gray-50 flex justify-between items-center">
-                    <h2 class="font-black text-gray-800 uppercase tracking-tight text-sm">Últimas Transações</h2>
-                    <div class="flex gap-2">
-                        <span class="text-[10px] font-bold bg-green-50 text-green-700 px-2 py-1 rounded">Entradas</span>
-                        <span class="text-[10px] font-bold bg-red-50 text-red-700 px-2 py-1 rounded">Saídas</span>
-                    </div>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left">
-                        <thead class="bg-gray-50 text-[10px] font-black text-gray-400 uppercase tracking-widest">
-                            <tr>
-                                <th class="px-8 py-4">Data</th>
-                                <th class="px-8 py-4">Descrição / Paciente</th>
-                                <th class="px-8 py-4">Categoria</th>
-                                <th class="px-8 py-4">Valor</th>
-                                <th class="px-8 py-4 text-right">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-50">
-                            <tr class="hover:bg-gray-50 transition">
-                                <td class="px-8 py-5 text-sm font-bold text-gray-700">12/03/2026</td>
-                                <td class="px-8 py-5">
-                                    <p class="text-sm font-black text-gray-800">Maria Oliveira</p>
-                                    <p class="text-[10px] text-gray-400 uppercase">Plano Semestral (Mar)</p>
-                                </td>
-                                <td class="px-8 py-5"><span
-                                        class="text-[10px] font-bold text-gray-500 border border-gray-200 px-2 py-1 rounded uppercase">Mensalidade</span>
-                                </td>
-                                <td class="px-8 py-5 text-sm font-black text-green-700">R$ 180,00</td>
-                                <td class="px-8 py-5 text-right"><span
-                                        class="text-[10px] font-black text-green-600 bg-green-50 px-2 py-1 rounded uppercase">Recebido</span>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-gray-50 transition">
-                                <td class="px-8 py-5 text-sm font-bold text-gray-700">11/03/2026</td>
-                                <td class="px-8 py-5">
-                                    <p class="text-sm font-black text-gray-800">Condomínio Star Coworking</p>
-                                    <p class="text-[10px] text-gray-400 uppercase">Aluguel Unidade Paulo Afonso</p>
-                                </td>
-                                <td class="px-8 py-5"><span
-                                        class="text-[10px] font-bold text-gray-500 border border-gray-200 px-2 py-1 rounded uppercase">Infraestrutura</span>
-                                </td>
-                                <td class="px-8 py-5 text-sm font-black text-red-600">- R$ 2.500,00</td>
-                                <td class="px-8 py-5 text-right"><span
-                                        class="text-[10px] font-black text-red-600 bg-red-50 px-2 py-1 rounded uppercase">Pago</span>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-gray-50 transition">
-                                <td class="px-8 py-5 text-sm font-bold text-gray-700">10/03/2026</td>
-                                <td class="px-8 py-5">
-                                    <p class="text-sm font-black text-gray-800">José Roberto</p>
-                                    <p class="text-[10px] text-gray-400 uppercase">Pacote Fisioterapia (10 sessões)</p>
-                                </td>
-                                <td class="px-8 py-5"><span
-                                        class="text-[10px] font-bold text-gray-500 border border-gray-200 px-2 py-1 rounded uppercase">Pacote</span>
-                                </td>
-                                <td class="px-8 py-5 text-sm font-black text-green-700">R$ 1.000,00</td>
-                                <td class="px-8 py-5 text-right"><span
-                                        class="text-[10px] font-black text-green-600 bg-green-50 px-2 py-1 rounded uppercase">Recebido</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
+    <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="p-6 border-b border-gray-50 flex justify-between items-center">
+            <h2 class="font-black text-gray-800 uppercase tracking-tight text-sm">Últimas Transações</h2>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left">
+                <thead class="bg-gray-50 text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                    <tr>
+                        <th class="px-8 py-4">Data</th>
+                        <th class="px-8 py-4">Descrição / Paciente</th>
+                        <th class="px-8 py-4">Categoria</th>
+                        <th class="px-8 py-4">Valor</th>
+                        <th class="px-8 py-4 text-right">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="transactions-list" class="divide-y divide-gray-50">
+                    <tr><td colspan="5" class="text-center py-8 text-gray-400 italic">Carregando transações...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
     </div>
 
     <app-footer></app-footer>
     <script src="footer.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const userStr = localStorage.getItem('user');
+        if (!userStr) {
+            window.location.href = 'login.html';
+            return;
+        }
+        const user = JSON.parse(userStr);
+        if (user.role !== 'doctor') {
+            window.location.href = 'areaclienta.html';
+            return;
+        }
 
+        fetchFinances();
+    });
+
+    async function fetchFinances() {
+        try {
+            const res = await fetch('/all-payments');
+            const data = await res.json();
+            
+            const tbody = document.getElementById('transactions-list');
+            const statsDiv = document.getElementById('finance-stats');
+
+            if (data.success) {
+                let receita = 0;
+                let despesa = 0;
+                let pendente = 0;
+
+                tbody.innerHTML = '';
+                if(data.data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" class="text-center py-8 text-gray-400 italic">Nenhuma transação encontrada.</td></tr>';
+                }
+
+                data.data.forEach(t => {
+                    // Logic to calculate sums based on payment schema.
+                    // Assuming positive amount = income, negative amount = expense, status = pending/paid
+                    const amt = parseFloat(t.amount);
+                    if (t.status === 'paid' || t.status === 'completed') {
+                        if (amt >= 0) receita += amt;
+                        else despesa += Math.abs(amt);
+                    } else if (t.status === 'pending') {
+                        if (amt >= 0) pendente += amt;
+                    }
+
+                    const date = new Date(t.due_date || t.created_at).toLocaleDateString('pt-BR');
+                    const isIncome = amt >= 0;
+                    const valueClass = isIncome ? 'text-green-700' : 'text-red-600';
+                    const valueStr = isIncome ? `R$ ${amt.toFixed(2)}` : `- R$ ${Math.abs(amt).toFixed(2)}`;
+                    const statusClass = (t.status === 'paid' || t.status === 'completed') 
+                        ? (isIncome ? 'text-green-600 bg-green-50' : 'text-red-600 bg-red-50')
+                        : 'text-orange-600 bg-orange-50';
+                    const statusText = t.status === 'pending' ? 'Pendente' : (isIncome ? 'Recebido' : 'Pago');
+
+                    tbody.innerHTML += `
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-8 py-5 text-sm font-bold text-gray-700">${date}</td>
+                            <td class="px-8 py-5">
+                                <p class="text-sm font-black text-gray-800">${t.client_name || 'Clínica'}</p>
+                                <p class="text-[10px] text-gray-400 uppercase">${t.description || 'Transação'}</p>
+                            </td>
+                            <td class="px-8 py-5"><span class="text-[10px] font-bold text-gray-500 border border-gray-200 px-2 py-1 rounded uppercase">${t.payment_method || 'N/A'}</span></td>
+                            <td class="px-8 py-5 text-sm font-black ${valueClass}">${valueStr}</td>
+                            <td class="px-8 py-5 text-right"><span class="text-[10px] font-black px-2 py-1 rounded uppercase ${statusClass}">${statusText}</span></td>
+                        </tr>
+                    `;
+                });
+
+                const lucro = receita - despesa;
+
+                statsDiv.innerHTML = `
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                        <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Receita Bruta</p>
+                        <h3 class="text-2xl font-black text-green-700">R$ ${receita.toFixed(2)}</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                        <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Despesas Fixas</p>
+                        <h3 class="text-2xl font-black text-red-600">R$ ${despesa.toFixed(2)}</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                        <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">A Receber</p>
+                        <h3 class="text-2xl font-black text-orange-500">R$ ${pendente.toFixed(2)}</h3>
+                    </div>
+                    <div class="bg-green-800 p-6 rounded-3xl shadow-xl text-white">
+                        <p class="text-[10px] font-black text-green-200 uppercase tracking-widest mb-2">Lucro Líquido</p>
+                        <h3 class="text-2xl font-black">R$ ${lucro.toFixed(2)}</h3>
+                    </div>
+                `;
+            }
+        } catch (err) {
+            console.error(err);
+            document.getElementById('transactions-list').innerHTML = '<tr><td colspan="5" class="text-center py-8 text-red-500 font-bold">Erro ao carregar finanças.</td></tr>';
+        }
+    }
+
+    function addTransaction() {
+        alert("Em desenvolvimento. Utilize o Supabase para adicionar entradas manuais.");
+    }
+</script>
 </body>
 
 </html>
