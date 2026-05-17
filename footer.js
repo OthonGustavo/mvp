@@ -63,7 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (userStr) {
         try {
             const user = JSON.parse(userStr);
-            const loginBtn = document.querySelector('a[href="login.html"]');
+            const loginBtn = Array.from(document.querySelectorAll('a[href="login.html"]')).find(btn => {
+                const text = btn.textContent.trim().toLowerCase();
+                return text === 'login' || text === 'entrar';
+            });
             const registerBtn = document.querySelector('a[href="registro.html"]');
             
             if (loginBtn && !window.location.pathname.includes('login.html') && !window.location.pathname.includes('registro.html')) {
