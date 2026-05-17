@@ -3,7 +3,6 @@ const { Pool } = require('pg');
 const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
-const bcrypt = require('bcryptjs');
 const PilatesCreditLogic = require('./logicapilatesconsulta');
 const app = express();
 app.use(cors());
@@ -58,16 +57,12 @@ app.post('/register', async (req, res) => {
     console.log(`[REGISTRATION ATTEMPT] Name: ${name}, Email: ${email}, Role: ${role}`);
 
     try {
-        // Gerar hash seguro para a senha
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
-
         const query = `
             INSERT INTO users (name, email, password_hash, role, cpf, whatsapp) 
             VALUES ($1, $2, $3, $4, $5, $6) 
             RETURNING id, name, email, role
         `;
-        const values = [name, email, hashedPassword, role, cpf, whatsapp];
+        const values = [name, email, password, role, cpf, whatsapp];
         const result = await pool.query(query, values);
 
         console.log(`[REGISTRATION SUCCESS] User created with ID: ${result.rows[0].id}`);
@@ -106,10 +101,7 @@ app.post('/login', async (req, res) => {
         const user = result.rows[0];
         console.log(`[DB USER] Found user: ${user.name}`);
 
-        // Comparar o hash com a senha enviada
-        const isMatch = await bcrypt.compare(password, user.password_hash);
-
-        if (isMatch) {
+        if (password === user.password_hash) {
             console.log(`[LOGIN SUCCESS] User: ${user.name}`);
             res.json({
                 success: true,
