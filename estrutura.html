@@ -101,19 +101,22 @@
                         </div>
                     </div>
 
-                    <a href="https://wa.me/5575988466843" target="_blank"
+                    <a href="https://maps.app.goo.gl/75EE6tBRLd2w6iRZ8" target="_blank"
                         class="mt-8 inline-block bg-green-700 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-800 transition">
                         Como chegar pelo GPS
                     </a>
                 </div>
 
-                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white h-96 bg-gray-200">
-                    <div class="w-full h-full flex flex-col items-center justify-center text-gray-500">
-                        <i class="fas fa-map-marked-alt text-6xl mb-4"></i>
-                        <p class="font-bold">Mapa da Unidade</p>
-                        <p class="text-sm px-10 text-center italic">Integrar Google Maps API ou Iframe aqui para mostrar
-                            o Star Coworking.</p>
-                    </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg border-4 border-white h-96">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.6669864230234!2d-38.2250917!3d-9.408479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x709210086c8a77d%3A0xc3f8e77a102c0f64!2sR.%20Otaviano%20Leandro%20de%20Moraes%2C%20165%20-%20Centro%2C%20Paulo%20Afonso%20-%20BA%2C%2048601-220!5e0!3m2!1spt-BR!2sbr!4v1710595000000!5m2!1spt-BR!2sbr" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
         </section>
@@ -133,52 +136,8 @@
         </section>
     </main>
 
-    <footer class="bg-gray-900 text-gray-300 pt-12 pb-8 mt-0">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4 uppercase font-bold">RENOVAR</h4>
-                <p class="text-sm leading-relaxed">
-                    Sua clínica de confiança para Pilates e Fisioterapia. Transformando vidas através do movemento
-                    consciente e reabilitação personalizada.
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4">Links Úteis</h4>
-                <ul class="text-sm space-y-2">
-                    <li><a href="#" class="hover:text-green-400 transition">Dúvidas Frequentes</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition">Política de Privacidade</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition">Trabalhe Conosco</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition">Blog da Saúde</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4 font-bold">Unidade Paulo Afonso</h4>
-                <p class="text-sm">Rua Otaviano Leandro de Moraes 165, Centro.</p>
-                <p class="text-sm mt-1">Empresarial Star Coworking</p>
-                <p class="text-sm mt-1 font-bold">Paulo Afonso - BA</p>
-                <p class="text-sm font-bold text-green-400 mt-4">
-                    <i class="fab fa-whatsapp"></i> +55 75 98846-6843
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4">Siga-nos</h4>
-                <div class="flex space-x-6">
-                    <a href="https://www.instagram.com/pilates.renovar?igsh=MWIwdmF0b2prYmgwMQ==" target="_blank"
-                        class="text-3xl hover:text-pink-500 transition duration-300">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://wa.me/5575988466843" target="_blank"
-                        class="text-3xl hover:text-green-500 transition duration-300">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-                <p class="text-xs mt-6 text-gray-500 italic font-medium">Agende sua aula experimental!</p>
-            </div>
-        </div>
-        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-xs text-gray-500">
-            <p>&copy; 2026 Pilates RENOVAR. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    <app-footer></app-footer>
+    <script src="footer.js"></script>
 
 </body>
 

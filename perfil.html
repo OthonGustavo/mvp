@@ -120,6 +120,89 @@
                         </div>
                     </div>
                 </div>
+                <!-- SEÇÃO DE PLANO E CRÉDITOS (NOVO LAYOUT COM BOTÕES) -->
+                <div id="credits-profile-section" class="bg-gray-50/50 p-4 rounded-3xl border border-gray-100">
+                    <div id="credits-profile-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Card 1: Plano Atual -->
+                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <p class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">PLANO ATUAL</p>
+                                    <button type="button" onclick="openPlanModal()" class="text-[10px] font-black text-green-600 hover:text-green-800 uppercase tracking-tighter underline">Alterar</button>
+                                </div>
+                                <h4 id="plan-name-display" class="text-xl font-black text-green-800 uppercase italic">Carregando...</h4>
+                            </div>
+                            <p id="plan-expiry-display" class="text-[10px] text-gray-400 font-medium mt-4 italic">Vence em --/--/----</p>
+                        </div>
+    
+                        <!-- Card 2: Sessões Restantes -->
+                        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 relative group flex flex-col justify-between">
+                            <i class="fas fa-sync-alt absolute right-6 top-6 text-xl text-green-100 opacity-50 group-hover:rotate-180 transition duration-700"></i>
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <p class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">SESSÕES RESTANTES</p>
+                                    <button type="button" id="btn-cancel-package" onclick="handleCancelPackage()" class="text-[10px] font-black text-red-500 hover:text-red-700 uppercase tracking-tighter underline hidden">Cancelar</button>
+                                </div>
+                                <div class="flex items-baseline gap-1 mt-2">
+                                    <span id="sessions-remaining" class="text-4xl font-black text-gray-800">--</span>
+                                    <span id="sessions-total" class="text-sm font-bold text-gray-400 italic">/ -- mês</span>
+                                </div>
+                            </div>
+                            <p class="text-[9px] text-gray-300 mt-4 font-bold uppercase tracking-tighter">* Consumo automático</p>
+                        </div>
+    
+                        <!-- Card 3: Status Financeiro -->
+                        <div id="financial-card" class="bg-green-700 p-6 rounded-3xl shadow-lg text-white flex flex-col justify-between">
+                            <div>
+                                <p class="text-[9px] font-black opacity-70 uppercase tracking-widest mb-1">STATUS FINANCEIRO</p>
+                                <h4 id="financial-status-text" class="text-2xl font-black italic uppercase">EM DIA</h4>
+                            </div>
+                            <p id="financial-next-date" class="text-[10px] opacity-80 font-medium mt-4 italic border-t border-white/20 pt-3">Próxima: --/--/----</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal de Alteração de Plano -->
+                <div id="plan-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4">
+                    <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden scale-90 opacity-0 transition-all duration-300 transform" id="modal-content">
+                        <div class="bg-green-800 p-6 text-white text-center">
+                            <h3 class="text-xl font-black uppercase italic tracking-tighter">Alterar Assinatura</h3>
+                            <p class="text-xs opacity-70 font-medium">Escolha seu novo tipo de acesso</p>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <button onclick="updateSubPlan('none')" class="w-full p-4 rounded-2xl border-2 border-gray-100 hover:border-green-600 hover:bg-green-50 transition-all text-left flex items-center gap-4 group">
+                                <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center group-hover:bg-green-600 transition">
+                                    <i class="fas fa-user text-gray-400 group-hover:text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-black text-gray-800 uppercase text-sm">Sem Plano (Créditos Avulsos)</p>
+                                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-tighter">Ideal para aulas ocasionais</p>
+                                </div>
+                            </button>
+                            <button onclick="updateSubPlan('gympass')" class="w-full p-4 rounded-2xl border-2 border-gray-100 hover:border-red-600 hover:bg-red-50 transition-all text-left flex items-center gap-4 group">
+                                <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center group-hover:bg-red-600 transition">
+                                    <i class="fas fa-star text-gray-400 group-hover:text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-black text-gray-800 uppercase text-sm">Gympass</p>
+                                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-tighter">Integração via aplicativo corporativo</p>
+                                </div>
+                            </button>
+                            <button onclick="updateSubPlan('totalpass')" class="w-full p-4 rounded-2xl border-2 border-gray-100 hover:border-blue-600 hover:bg-blue-50 transition-all text-left flex items-center gap-4 group">
+                                <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center group-hover:bg-blue-600 transition">
+                                    <i class="fas fa-id-card text-gray-400 group-hover:text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-black text-gray-800 uppercase text-sm">Total Pass</p>
+                                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-tighter">Acesso ilimitado via parceiro</p>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="p-4 bg-gray-50 text-center">
+                            <button onclick="closePlanModal()" class="text-[10px] font-black text-gray-400 uppercase tracking-widest hover:text-gray-600 mb-2">Fechar sem alterar</button>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
                     <h3 class="text-sm font-black text-red-600 uppercase tracking-widest mb-6 flex items-center">
@@ -177,52 +260,8 @@
         </main>
     </div>
 
-    <footer class="bg-gray-900 text-gray-300 pt-12 pb-8 mt-0">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4 uppercase font-bold">RENOVAR</h4>
-                <p class="text-sm leading-relaxed">
-                    Sua clínica de confiança para Pilates e Fisioterapia. Transformando vidas através do movimento
-                    consciente e reabilitação personalizada.
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4">Links Úteis</h4>
-                <ul class="text-sm space-y-2">
-                    <li><a href="#" class="hover:text-green-400 transition">Dúvidas Frequentes</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition">Política de Privacidade</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition">Trabalhe Conosco</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition">Blog da Saúde</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4 font-bold">Unidade Paulo Afonso</h4>
-                <p class="text-sm">Rua Otaviano Leandro de Moraes 165, Centro.</p>
-                <p class="text-sm mt-1">Empresarial Star Coworking</p>
-                <p class="text-sm mt-1 font-bold">Paulo Afonso - BA</p>
-                <p class="text-sm font-bold text-green-400 mt-4">
-                    <i class="fab fa-whatsapp"></i> +55 75 98846-6843
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4">Siga-nos</h4>
-                <div class="flex space-x-6">
-                    <a href="https://www.instagram.com/pilates.renovar?igsh=MWIwdmF0b2prYmgwMQ==" target="_blank"
-                        class="text-3xl hover:text-pink-500 transition duration-300">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://wa.me/5575988466843" target="_blank"
-                        class="text-3xl hover:text-green-500 transition duration-300">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-                <p class="text-xs mt-6 text-gray-500 italic font-medium">Agende sua aula experimental!</p>
-            </div>
-        </div>
-        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-xs text-gray-500">
-            <p>&copy; 2026 Pilates RENOVAR. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    <app-footer></app-footer>
+    <script src="footer.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
@@ -258,11 +297,163 @@
                     document.getElementById('input-cpf').value = user.cpf;
                     document.getElementById('input-email').value = user.email;
                     document.getElementById('input-whatsapp').value = user.whatsapp || '';
+                    
+                    fetchProfileCredits(user.id);
                 }
             } catch (err) {
                 console.error('Erro ao buscar dados:', err);
             }
         });
+
+        let currentUserId = null;
+        let currentBatchId = null;
+
+        async function fetchProfileCredits(clientId) {
+            currentUserId = clientId;
+            try {
+                const response = await fetch(`/client/credits?clientId=${clientId}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Elementos do DOM
+                    const planName = document.getElementById('plan-name-display');
+                    const planExpiry = document.getElementById('plan-expiry-display');
+                    const sessRem = document.getElementById('sessions-remaining');
+                    const sessTot = document.getElementById('sessions-total');
+                    const btnCancel = document.getElementById('btn-cancel-package');
+                    
+                    const finCard = document.getElementById('financial-card');
+                    const finStatus = document.getElementById('financial-status-text');
+                    const finNext = document.getElementById('financial-next-date');
+
+                    const subPlan = data.subscriptionPlan; // 'none', 'gympass', 'totalpass'
+
+                    // 1. LÓGICA COORPORATIVA (Gympass / Total Pass)
+                    if (subPlan === 'gympass' || subPlan === 'totalpass') {
+                        const isGympass = subPlan === 'gympass';
+                        btnCancel.classList.add('hidden');
+                        
+                        // Card 1: PLANO ATUAL
+                        planName.innerText = isGympass ? 'GYMPASS' : 'TOTAL PASS';
+                        planName.className = isGympass ? 'text-xl font-black text-red-600 uppercase italic' : 'text-xl font-black text-blue-600 uppercase italic';
+                        planExpiry.innerText = 'Ativo via parceiro';
+
+                        // Card 2: SESSÕES RESTANTES
+                        sessRem.innerText = '∞';
+                        sessRem.className = 'text-5xl font-black text-gray-800';
+                        sessTot.innerText = 'ilimitado via check-in';
+
+                        // Card 3: STATUS FINANCEIRO
+                        finCard.className = "bg-gray-800 p-6 rounded-3xl shadow-lg text-white flex flex-col justify-between";
+                        finStatus.innerText = 'PARCEIRO';
+                        finNext.innerText = 'Gerenciado pelo aplicativo';
+                        
+                    } else {
+                        // 2. LÓGICA PADRÃO DE CRÉDITOS
+                        const activeBatch = data.batches[0]; // Pega o principal/próximo a vencer
+                        if (activeBatch) {
+                            currentBatchId = activeBatch.id;
+                            btnCancel.classList.remove('hidden');
+                            planName.innerText = activeBatch.plan_name || 'PLANO PILATES';
+                            planName.className = "text-xl font-black text-green-800 uppercase italic";
+                            planExpiry.innerText = `Vence em ${new Date(activeBatch.valid_until).toLocaleDateString('pt-BR')}`;
+                            sessRem.innerText = activeBatch.available_credits.toString().padStart(2, '0');
+                            sessRem.className = "text-4xl font-black text-gray-800";
+                            sessTot.innerText = `/ ${activeBatch.total_credits.toString().padStart(2, '0')} mês`;
+                        } else {
+                            currentBatchId = null;
+                            btnCancel.classList.add('hidden');
+                            planName.innerText = 'SEM PLANO';
+                            planName.className = "text-xl font-black text-gray-400 uppercase italic";
+                            planExpiry.innerText = 'Adquira um pacote';
+                            sessRem.innerText = '00';
+                            sessRem.className = "text-4xl font-black text-gray-300";
+                            sessTot.innerText = '/ 00 mês';
+                        }
+
+                        // 3. Processar Financeiro (Apenas para planos padrão)
+                        const fin = data.financialStatus;
+                        
+                        if (fin && fin.status === 'paid') {
+                            finCard.className = "bg-green-700 p-6 rounded-3xl shadow-lg shadow-green-200 text-white flex flex-col justify-between";
+                            finStatus.innerText = 'EM DIA';
+                            finNext.innerText = `Próxima: ${new Date(fin.due_date).toLocaleDateString('pt-BR')}`;
+                        } else if (fin && fin.status === 'pending') {
+                            finCard.className = "bg-yellow-500 p-6 rounded-3xl shadow-lg shadow-yellow-200 text-white flex flex-col justify-between";
+                            finStatus.innerText = 'PENDENTE';
+                            finNext.innerText = `Vencimento: ${new Date(fin.due_date).toLocaleDateString('pt-BR')}`;
+                        } else {
+                            finCard.className = "bg-gray-400 p-6 rounded-3xl shadow-lg text-white flex flex-col justify-between";
+                            finStatus.innerText = 'N/A';
+                            finNext.innerText = 'Nenhum registro';
+                        }
+                    }
+                }
+            } catch (err) { 
+                console.error('Erro ao buscar créditos no perfil:', err);
+            }
+        }
+
+        // Funções do Modal de Plano
+        function openPlanModal() {
+            const modal = document.getElementById('plan-modal');
+            const content = document.getElementById('modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-90', 'opacity-0');
+            }, 10);
+        }
+
+        function closePlanModal() {
+            const modal = document.getElementById('plan-modal');
+            const content = document.getElementById('modal-content');
+            content.classList.add('scale-90', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        async function updateSubPlan(newPlan) {
+            if (!confirm(`Deseja alterar seu acesso para ${newPlan.toUpperCase()}?`)) return;
+            try {
+                const response = await fetch(`/users/${currentUserId}/subscription`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ plan: newPlan })
+                });
+                const resData = await response.json();
+                if (resData.success) {
+                    alert('Plano atualizado com sucesso!');
+                    closePlanModal();
+                    fetchProfileCredits(currentUserId);
+                } else {
+                    alert('Erro ao atualizar plano: ' + resData.message);
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Erro na conexão com o servidor.');
+            }
+        }
+
+        async function handleCancelPackage() {
+            if (!currentBatchId) return;
+            if (!confirm('Você tem certeza que deseja cancelar seu pacote de créditos atual? Os créditos remanescentes serão zerados.')) return;
+            
+            try {
+                const response = await fetch(`/client/credits/${currentBatchId}`, { method: 'DELETE' });
+                const resData = await response.json();
+                if (resData.success) {
+                    alert('Pacote cancelado com sucesso.');
+                    fetchProfileCredits(currentUserId);
+                } else {
+                    alert('Erro ao cancelar pacote.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Erro na conexão com o servidor.');
+            }
+        }
+
     </script>
 </body>
 

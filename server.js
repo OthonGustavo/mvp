@@ -2,13 +2,30 @@ const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
 require('dotenv').config();
-
+const path = require('path');
+const bcrypt = require('bcryptjs');
+const PilatesCreditLogic = require('./logicapilatesconsulta');
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Servir arquivos estáticos (HTML, CSS, JS do frontend)
+app.use(express.static(path.join(__dirname)));
+
+// Rota raiz - Redireciona para o login
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'login.html'));
+});
+
 // Configurações do Banco de Dados
-// CONFIGURAÇÃO DO BANCO DE DADOS (SUPABASE)
+if (!process.env.DATABASE_URL) {
+    console.error('❌ ERRO CRÍTICO: Variável DATABASE_URL não encontrada no .env!');
+    console.log('Verifique se o arquivo .env existe e se contém a chave DATABASE_URL.');
+} else {
+    const maskedUrl = process.env.DATABASE_URL.replace(/:([^@]+)@/, ':****@');
+    console.log(`🔗 Tentando conectar ao banco: ${maskedUrl.split('@')[1] || 'URL Inválida'}`);
+}
+
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
@@ -19,11 +36,16 @@ const pool = new Pool({
 // Testar conexão
 pool.connect((err, client, release) => {
     if (err) {
-        return console.error('Erro ao conectar ao banco de dados:', err.stack);
+        console.error('❌ Erro ao conectar ao banco de dados!');
+        console.error('Detalhes do erro:', err.message);
+        console.error('Código do erro:', err.code);
+        return;
     }
-    console.log('Conectado ao PostgreSQL com sucesso!');
+    console.log('✅ Conectado ao PostgreSQL (Supabase) com sucesso!');
     release();
 });
+
+const creditLogic = new PilatesCreditLogic(pool);
 
 // Adicionar listener de erro global no pool
 pool.on('error', (err) => {
@@ -36,12 +58,16 @@ app.post('/register', async (req, res) => {
     console.log(`[REGISTRATION ATTEMPT] Name: ${name}, Email: ${email}, Role: ${role}`);
 
     try {
+        // Gerar hash seguro para a senha
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
         const query = `
             INSERT INTO users (name, email, password_hash, role, cpf, whatsapp) 
             VALUES ($1, $2, $3, $4, $5, $6) 
             RETURNING id, name, email, role
         `;
-        const values = [name, email, password, role, cpf, whatsapp];
+        const values = [name, email, hashedPassword, role, cpf, whatsapp];
         const result = await pool.query(query, values);
 
         console.log(`[REGISTRATION SUCCESS] User created with ID: ${result.rows[0].id}`);
@@ -80,7 +106,10 @@ app.post('/login', async (req, res) => {
         const user = result.rows[0];
         console.log(`[DB USER] Found user: ${user.name}`);
 
-        if (password === user.password_hash) {
+        // Comparar o hash com a senha enviada
+        const isMatch = await bcrypt.compare(password, user.password_hash);
+
+        if (isMatch) {
             console.log(`[LOGIN SUCCESS] User: ${user.name}`);
             res.json({
                 success: true,
@@ -185,15 +214,93 @@ app.get('/appointments/availability', async (req, res) => {
     }
 });
 
-// Criar novo agendamento
+// Buscar créditos do cliente
+app.get('/client/credits', async (req, res) => {
+    const { clientId } = req.query;
+    if (!clientId) return res.status(400).json({ success: false, message: 'ID do cliente é obrigatório' });
+    try {
+        const data = await creditLogic.getClientCredits(clientId);
+        res.json({ success: true, ...data });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Erro ao buscar créditos' });
+    }
+});
+
+// Atualizar plano de assinatura (None, Gympass, TotalPass)
+app.patch('/users/:id/subscription', async (req, res) => {
+    const { id } = req.params;
+    const { plan } = req.body;
+    if (!['none', 'gympass', 'totalpass'].includes(plan)) {
+        return res.status(400).json({ success: false, message: 'Plano inválido' });
+    }
+    try {
+        const result = await creditLogic.updateSubscription(id, plan);
+        res.json(result);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Erro ao atualizar plano' });
+    }
+});
+
+// Cancelar um lote de créditos (pacote)
+app.delete('/client/credits/:batchId', async (req, res) => {
+    const { batchId } = req.params;
+    try {
+        const result = await creditLogic.cancelCreditBatch(batchId);
+        res.json(result);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Erro ao cancelar pacote' });
+    }
+});
+
+// Criar novo agendamento com trava de colisão e consumo de créditos
 app.post('/appointments', async (req, res) => {
     const { client_id, doctor_id, service_type, scheduled_at, notes } = req.body;
+    
+    if (!client_id || !doctor_id || !scheduled_at) {
+        return res.status(400).json({ success: false, message: 'Dados incompletos para agendamento' });
+    }
+
     try {
-        const query = 'INSERT INTO appointments (client_id, doctor_id, service_type, scheduled_at, notes) VALUES ($1, $2, $3, $4, $5) RETURNING *';
-        const result = await pool.query(query, [client_id, doctor_id, service_type, scheduled_at, notes]);
-        res.status(201).json({ success: true, data: result.rows[0] });
+        const appointment = await creditLogic.bookAppointmentWithCredit(
+            client_id, 
+            doctor_id, 
+            service_type, 
+            scheduled_at, 
+            notes
+        );
+        
+        res.status(201).json({ success: true, data: appointment });
     } catch (err) {
-        res.status(500).json({ success: false, message: 'Erro ao criar agendamento' });
+        console.error('[BOOKING ERROR]', err);
+        const status = err.message.includes('créditos') ? 402 : (err.message.includes('ocupado') ? 409 : 500);
+        res.status(status).json({ success: false, message: err.message || 'Erro ao criar agendamento' });
+    }
+});
+
+// Endpoint de desenvolvimento para conceder créditos (PARA TESTE)
+app.post('/dev/grant-credits', async (req, res) => {
+    const { clientId, type, amount, validityDays } = req.body;
+    try {
+        const batch = await creditLogic.grantCredits(clientId, type, amount, validityDays || 30);
+        res.json({ success: true, batch });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'Erro ao conceder créditos' });
+    }
+});
+
+// Cancelar agendamento (com regra de 24h e estorno de crédito)
+app.post('/appointments/:id/cancel', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await creditLogic.cancelAppointment(id);
+        res.json({ success: true, ...result });
+    } catch (err) {
+        console.error('[CANCEL ERROR]', err);
+        res.status(500).json({ success: false, message: err.message || 'Erro ao cancelar agendamento' });
     }
 });
 
@@ -247,7 +354,7 @@ app.get('/stats', async (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 // Só inicia o servidor se não estiver na Vercel (que usa serverless functions)
-if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+if (!process.env.VERCEL) {
     const server = app.listen(PORT, () => {
         console.log(`Servidor RENOVAR rodando localmente na porta ${PORT}`);
     });

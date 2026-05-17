@@ -46,10 +46,11 @@
                     <div class="flex items-center space-x-3">
                         <a href="perfil.html" class="flex items-center space-x-3 hover:opacity-80 transition">
                             <div class="text-right hidden sm:block leading-none">
-                                <p class="text-sm font-bold text-gray-800">Othon Gustavo</p>
+                                <p id="user-name-display" class="text-sm font-bold text-gray-800">Carregando...</p>
                                 <p class="text-[10px] text-green-600 font-bold uppercase">Cliente</p>
                             </div>
-                            <img src="https://ui-avatars.com/api/?name=Othon+Gustavo&background=2D5A27&color=fff"
+                            <img id="img-user-display"
+                                src="https://ui-avatars.com/api/?name=User&background=2D5A27&color=fff"
                                 class="w-10 h-10 rounded-full border border-gray-200">
                         </a>
                     </div>
@@ -86,136 +87,216 @@
                 <p class="text-gray-500">Visualize todas as suas próximas sessões marcadas.</p>
             </div>
 
-            <div class="space-y-10">
+            <div id="credits-section" class="mb-10 hidden">
+                <h2 class="text-sm font-black text-blue-700 uppercase tracking-widest mb-4 flex items-center">
+                    <span class="w-2 h-2 bg-blue-700 rounded-full mr-2"></span> Meus Créditos
+                </h2>
+                <div id="credits-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Cards de crédito serão inseridos aqui -->
+                </div>
+            </div>
 
+            <div class="space-y-10">
                 <div>
                     <h2 class="text-sm font-black text-green-700 uppercase tracking-widest mb-4 flex items-center">
                         <span class="w-2 h-2 bg-green-700 rounded-full mr-2"></span> Esta Semana
                     </h2>
 
-                    <div class="space-y-4">
-                        <div
-                            class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-center gap-6 hover:shadow-md transition">
-                            <div
-                                class="bg-green-700 text-white w-16 h-16 rounded-xl flex flex-col items-center justify-center">
-                                <span class="text-xs font-bold uppercase">Mar</span>
-                                <span class="text-xl font-black leading-none">12</span>
-                            </div>
-                            <div class="flex-1">
-                                <h3 class="font-extrabold text-gray-800">Pilates Clínico</h3>
-                                <p class="text-sm text-gray-500 italic"><i class="far fa-clock mr-1"></i> 14:30h -
-                                    Quinta-feira</p>
-                            </div>
-                            <div class="text-right">
-                                <span
-                                    class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Confirmado</span>
-                            </div>
-                        </div>
-
-                        <div
-                            class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-center gap-6 hover:shadow-md transition">
-                            <div
-                                class="bg-gray-200 text-gray-600 w-16 h-16 rounded-xl flex flex-col items-center justify-center">
-                                <span class="text-xs font-bold uppercase">Mar</span>
-                                <span class="text-xl font-black leading-none">14</span>
-                            </div>
-                            <div class="flex-1">
-                                <h3 class="font-extrabold text-gray-800">Fisioterapia Traumato-Ortopédica</h3>
-                                <p class="text-sm text-gray-500 italic"><i class="far fa-clock mr-1"></i> 09:00h -
-                                    Sábado</p>
-                            </div>
-                            <div class="text-right">
-                                <span
-                                    class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Avaliação</span>
-                            </div>
-                        </div>
+                    <div id="weekly-appointments" class="space-y-4">
+                        <p class="text-sm text-gray-400 italic">Carregando...</p>
                     </div>
                 </div>
 
                 <div>
                     <h2 class="text-sm font-black text-gray-400 uppercase tracking-widest mb-4 flex items-center">
-                        <span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Próximas Semanas
+                        <span class="w-2 h-2 bg-gray-300 rounded-full mr-2"></span> Todas as Consultas
                     </h2>
 
                     <div class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm">
                         <table class="w-full text-left border-collapse">
-                            <tbody class="divide-y divide-gray-50">
-                                <tr class="hover:bg-gray-50 transition cursor-default">
-                                    <td class="px-6 py-4 font-bold text-gray-800">19/03</td>
-                                    <td class="px-6 py-4 text-sm text-gray-600 font-medium">Quinta-feira</td>
-                                    <td class="px-6 py-4 text-sm text-gray-600 font-bold">14:30h</td>
-                                    <td class="px-6 py-4 text-sm text-gray-500">Pilates Individual</td>
-                                    <td class="px-6 py-4 text-right">
-                                        <button class="text-gray-300 hover:text-red-500"><i
-                                                class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-gray-50 transition cursor-default">
-                                    <td class="px-6 py-4 font-bold text-gray-800">26/03</td>
-                                    <td class="px-6 py-4 text-sm text-gray-600 font-medium">Quinta-feira</td>
-                                    <td class="px-6 py-4 text-sm text-gray-600 font-bold">14:30h</td>
-                                    <td class="px-6 py-4 text-sm text-gray-500">Pilates Individual</td>
-                                    <td class="px-6 py-4 text-right">
-                                        <button class="text-gray-300 hover:text-red-500"><i
-                                                class="fas fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
+                            <tbody id="all-appointments-table" class="divide-y divide-gray-50">
+                                <!-- Filas de agendamentos -->
                             </tbody>
                         </table>
                     </div>
                 </div>
-
             </div>
         </main>
     </div>
 
-    <footer class="bg-gray-900 text-gray-300 pt-12 pb-8 mt-0">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4 uppercase font-bold">RENOVAR</h4>
-                <p class="text-sm leading-relaxed">
-                    Sua clínica de confiança para Pilates e Fisioterapia. Transformando vidas através do movimento
-                    consciente e reabilitação personalizada.
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4">Links Úteis</h4>
-                <ul class="text-sm space-y-2">
-                    <li><a href="#" class="hover:text-green-400 transition">Dúvidas Frequentes</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition">Política de Privacidade</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition">Trabalhe Conosco</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition">Blog da Saúde</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4 font-bold">Unidade Paulo Afonso</h4>
-                <p class="text-sm">Rua Otaviano Leandro de Moraes 165, Centro.</p>
-                <p class="text-sm mt-1">Empresarial Star Coworking</p>
-                <p class="text-sm mt-1 font-bold">Paulo Afonso - BA</p>
-                <p class="text-sm font-bold text-green-400 mt-4">
-                    <i class="fab fa-whatsapp"></i> +55 75 98846-6843
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4">Siga-nos</h4>
-                <div class="flex space-x-6">
-                    <a href="https://www.instagram.com/pilates.renovar?igsh=MWIwdmF0b2prYmgwMQ==" target="_blank"
-                        class="text-3xl hover:text-pink-500 transition duration-300">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://wa.me/5575988466843" target="_blank"
-                        class="text-3xl hover:text-green-500 transition duration-300">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-                <p class="text-xs mt-6 text-gray-500 italic font-medium">Agende sua aula experimental!</p>
-            </div>
-        </div>
-        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-xs text-gray-500">
-            <p>&copy; 2026 Pilates RENOVAR. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    <app-footer></app-footer>
+    <script src="footer.js"></script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.location.protocol === 'file:') {
+                alert('⚠️ Atenção: Para que o sistema funcione corretamente, você deve rodar o servidor (node server.js) e acessar via http://localhost:3000. Abrir o arquivo diretamente no navegador impede a conexão com o banco de dados.');
+                return;
+            }
+
+            const userStr = localStorage.getItem('user');
+            if (!userStr) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const user = JSON.parse(userStr);
+            document.getElementById('user-name-display').innerText = user.name;
+            document.getElementById('img-user-display').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=2D5A27&color=fff`;
+
+            fetchClientAppointments(user.id);
+            fetchClientCredits(user.id);
+        });
+
+        async function fetchClientCredits(clientId) {
+            try {
+                const response = await fetch(`/client/credits?clientId=${clientId}`);
+                const data = await response.json();
+                if (data.success && data.credits.length > 0) {
+                    document.getElementById('credits-section').classList.remove('hidden');
+                    renderCredits(data.credits);
+                }
+            } catch (err) { console.error('Erro ao buscar créditos:', err); }
+        }
+
+        function renderCredits(credits) {
+            const container = document.getElementById('credits-container');
+            container.innerHTML = '';
+            
+            credits.forEach(batch => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-5 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition duration-300";
+                
+                const date = new Date(batch.valid_until).toLocaleDateString('pt-BR');
+                let typeLabel = 'Crédito';
+                let typeColor = 'text-gray-600';
+                let icon = 'fa-ticket-alt';
+
+                if (batch.type === 'pacote_mensal') {
+                    typeLabel = 'Pacote Mensal';
+                    typeColor = 'text-blue-600';
+                    icon = 'fa-calendar-check';
+                } else if (batch.type === 'avulso') {
+                    typeLabel = 'Crédito Avulso';
+                    typeColor = 'text-purple-600';
+                    icon = 'fa-star';
+                } else if (batch.type === 'promocional') {
+                    typeLabel = 'Promocional (Gympass)';
+                    typeColor = 'text-orange-600';
+                    icon = 'fa-bolt';
+                }
+                
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-[10px] font-black uppercase px-2 py-1 bg-gray-50 rounded-lg ${typeColor}">${typeLabel}</span>
+                        <i class="fas ${icon} ${typeColor} opacity-20 text-xl"></i>
+                    </div>
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <p class="text-3xl font-black text-gray-800">${batch.available_credits}<span class="text-xs text-gray-400 font-bold ml-1">/ ${batch.total_credits}</span></p>
+                            <p class="text-[10px] text-gray-400 font-bold mt-1 uppercase">Expira em: ${date}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        async function fetchClientAppointments(clientId) {
+            try {
+                const response = await fetch(`/appointments?clientId=${clientId}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    renderClientAppointments(data.data);
+                } else {
+                    console.error('Erro:', data.message);
+                }
+            } catch (err) {
+                console.error('Erro na requisição:', err);
+            }
+        }
+
+        function renderClientAppointments(appointments) {
+            const weeklyContainer = document.getElementById('weekly-appointments');
+            const allTable = document.getElementById('all-appointments-table');
+
+            if (appointments.length === 0) {
+                weeklyContainer.innerHTML = '<p class="text-sm text-gray-500 italic">Você não possui consultas marcadas.</p>';
+                allTable.innerHTML = '<tr><td class="px-6 py-10 text-center text-gray-400">Nenhum registro encontrado.</td></tr>';
+                return;
+            }
+
+            weeklyContainer.innerHTML = '';
+            allTable.innerHTML = '';
+
+            const today = new Date();
+            const startOfWeek = new Date(today);
+            startOfWeek.setDate(today.getDate() - today.getDay());
+            const endOfWeek = new Date(startOfWeek);
+            endOfWeek.setDate(startOfWeek.getDate() + 6);
+
+            appointments.forEach(appo => {
+                const date = new Date(appo.scheduled_at);
+                const day = date.getDate().toString().padStart(2, '0');
+                const monthName = date.toLocaleString('pt-BR', { month: 'short' }).replace('.', '');
+                const fullDate = date.toLocaleDateString('pt-BR');
+                const hour = date.getHours().toString().padStart(2, '0') + ':' + date.getMinutes().toString().padStart(2, '0') + 'h';
+                const weekDay = date.toLocaleString('pt-BR', { weekday: 'long' });
+
+                if (date >= startOfWeek && date <= endOfWeek) {
+                    const weeklyCard = document.createElement('div');
+                    weeklyCard.className = "bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-center gap-6 hover:shadow-md transition";
+                    weeklyCard.innerHTML = `
+                        <div class="bg-green-700 text-white w-16 h-16 rounded-xl flex flex-col items-center justify-center">
+                            <span class="text-xs font-bold uppercase">${monthName}</span>
+                            <span class="text-xl font-black leading-none">${day}</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-extrabold text-gray-800">${appo.service_type}</h3>
+                            <p class="text-sm text-gray-500 italic"><i class="far fa-clock mr-1"></i> ${hour} - ${weekDay}</p>
+                            <p class="text-[10px] text-green-700 font-bold uppercase mt-1">Profissional: ${appo.doctor_name}</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Confirmado</span>
+                        </div>
+                    `;
+                    weeklyContainer.appendChild(weeklyCard);
+                }
+
+                const row = document.createElement('tr');
+                row.className = "hover:bg-gray-50 transition cursor-default";
+                row.innerHTML = `
+                    <td class="px-6 py-4 font-bold text-gray-800">${fullDate.split('/')[0]}/${fullDate.split('/')[1]}</td>
+                    <td class="px-6 py-4 text-sm text-gray-600 font-medium capitalize">${weekDay}</td>
+                    <td class="px-6 py-4 text-sm text-gray-600 font-bold">${hour}</td>
+                    <td class="px-6 py-4 text-sm text-gray-500">${appo.service_type}</td>
+                    <td class="px-6 py-4 text-right">
+                        <button onclick="requestCancel(${appo.id})" class="text-gray-300 hover:text-red-500" title="Cancelar"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                `;
+                allTable.appendChild(row);
+            });
+
+            if (weeklyContainer.innerHTML === '') {
+                weeklyContainer.innerHTML = '<p class="text-sm text-gray-500 italic">Nenhuma consulta para esta semana.</p>';
+            }
+        }
+
+        async function requestCancel(id) {
+            if (!confirm('Deseja realmente cancelar esta consulta?')) return;
+            try {
+                const response = await fetch(`/appointments/${id}/cancel`, { method: 'POST' });
+                const data = await response.json();
+                if (data.success) {
+                    alert(data.refunded ? 'Consulta cancelada e crédito estornado!' : 'Consulta cancelada. (Atenção: Crédito não estornado devido ao prazo de 24h)');
+                    location.reload();
+                } else {
+                    alert('Erro ao cancelar: ' + data.message);
+                }
+            } catch (err) { console.error('Erro na requisição:', err); }
+        }
+    </script>
 </body>
 
 </html>

@@ -49,10 +49,10 @@
                     <a href="perfildoutor.html"
                         class="flex items-center space-x-3 text-right hover:opacity-80 transition">
                         <div class="hidden sm:block leading-none">
-                            <p class="text-sm font-black text-gray-800 italic">Dr. Othon Gustavo</p>
+                            <p id="user-name-display" class="text-sm font-black text-gray-800 italic">Dr. Othon Gustavo</p>
                             <p class="text-[10px] text-green-600 font-bold uppercase tracking-widest">Fisioterapeuta</p>
                         </div>
-                        <img src="https://ui-avatars.com/api/?name=Othon+Gustavo&background=2D5A27&color=fff"
+                        <img id="user-img-display" src="https://ui-avatars.com/api/?name=Othon+Gustavo&background=2D5A27&color=fff"
                             class="w-10 h-10 rounded-full border-2 border-green-50 shadow-sm">
                     </a>
                 </div>
@@ -98,134 +98,138 @@
                 <div class="flex gap-4">
                     <div class="bg-white px-4 py-2 rounded-xl shadow-sm border border-gray-100 text-center">
                         <p class="text-[10px] font-bold text-gray-400 uppercase">Atendimentos</p>
-                        <p class="text-xl font-black text-green-700">12</p>
+                        <p id="total-appointments-count" class="text-xl font-black text-green-700">00</p>
                     </div>
                     <div class="bg-white px-4 py-2 rounded-xl shadow-sm border border-gray-100 text-center">
                         <p class="text-[10px] font-bold text-gray-400 uppercase">Restantes</p>
-                        <p class="text-xl font-black text-orange-500">04</p>
+                        <p id="remaining-appointments-count" class="text-xl font-black text-orange-500">00</p>
                     </div>
                 </div>
             </div>
 
-            <div class="space-y-4">
-
-                <div
-                    class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-6 hover:border-green-300 transition group">
-                    <div class="text-center md:border-r md:pr-6 border-gray-100">
-                        <p class="text-2xl font-black text-gray-800">08:00</p>
-                        <p class="text-[10px] font-bold text-gray-400 uppercase">Início</p>
-                    </div>
-
-                    <div class="flex-1">
-                        <div class="flex items-center gap-2">
-                            <h3 class="text-lg font-bold text-gray-800">Maria Oliveira</h3>
-                            <span
-                                class="bg-green-100 text-green-700 text-[10px] font-black px-2 py-0.5 rounded uppercase italic">Confirmado</span>
-                        </div>
-                        <p class="text-sm text-gray-500 font-medium">Pilates Individual - <span
-                                class="text-green-700">Plano Semestral</span></p>
-                    </div>
-
-                    <div class="flex gap-2">
-                        <a href="areadoutorprontuariospaciente.html"
-                            class="bg-gray-900 text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-gray-800 transition">
-                            <i class="fas fa-file-medical mr-1"></i> Abrir Prontuário
-                        </a>
-                        <button class="bg-gray-50 text-gray-400 p-2 rounded-xl hover:text-green-700 transition">
-                            <i class="fas fa-ellipsis-h"></i>
-                        </button>
-                    </div>
+                <div id="appointments-list" class="space-y-4">
+                    <p class="text-center text-gray-400 py-10 italic">Carregando agenda...</p>
                 </div>
-
-                <div
-                    class="bg-green-700 p-6 rounded-3xl shadow-xl shadow-green-100 flex flex-col md:flex-row items-center gap-6 text-white transform scale-[1.02]">
-                    <div class="text-center md:border-r md:pr-6 border-green-600">
-                        <p class="text-2xl font-black">09:30</p>
-                        <p class="text-[10px] font-bold text-green-200 uppercase tracking-widest italic">Agora</p>
-                    </div>
-
-                    <div class="flex-1">
-                        <h3 class="text-lg font-bold">José Roberto</h3>
-                        <p class="text-sm text-green-100 font-medium">Fisioterapia Traumato-Ortopédica (Sessão 04/10)
-                        </p>
-                    </div>
-
-                    <div class="flex gap-2">
-                        <button
-                            class="bg-white text-green-700 px-4 py-2 rounded-xl text-xs font-bold shadow-md hover:bg-green-50 transition">
-                            Finalizar Sessão
-                        </button>
-                    </div>
-                </div>
-
-                <div
-                    class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-6 opacity-60">
-                    <div class="text-center md:border-r md:pr-6 border-gray-100">
-                        <p class="text-2xl font-black text-gray-400">11:00</p>
-                        <p class="text-[10px] font-bold text-gray-300 uppercase">Pendente</p>
-                    </div>
-
-                    <div class="flex-1">
-                        <h3 class="text-lg font-bold text-gray-400">Ana Clara Souza</h3>
-                        <p class="text-sm text-gray-300 font-medium">Avaliação Inicial - Pilates Clínico</p>
-                    </div>
-
-                    <button class="border border-gray-200 text-gray-400 px-4 py-2 rounded-xl text-xs font-bold">
-                        Aguardando
-                    </button>
-                </div>
-
             </div>
         </main>
     </div>
 
-    <footer class="bg-gray-900 text-gray-300 pt-12 pb-8 mt-0">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4 uppercase font-bold">RENOVAR</h4>
-                <p class="text-sm leading-relaxed">
-                    Sua clínica de confiança para Pilates e Fisioterapia. Transformando vidas através do movimento
-                    consciente e reabilitação personalizada.
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4">Links Úteis</h4>
-                <ul class="text-sm space-y-2">
-                    <li><a href="#" class="hover:text-green-400 transition">Dúvidas Frequentes</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition">Política de Privacidade</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition">Trabalhe Conosco</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition">Blog da Saúde</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4 font-bold">Unidade Paulo Afonso</h4>
-                <p class="text-sm">Rua Otaviano Leandro de Moraes 165, Centro.</p>
-                <p class="text-sm mt-1">Empresarial Star Coworking</p>
-                <p class="text-sm mt-1 font-bold">Paulo Afonso - BA</p>
-                <p class="text-sm font-bold text-green-400 mt-4">
-                    <i class="fab fa-whatsapp"></i> +55 75 98846-6843
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-lg mb-4">Siga-nos</h4>
-                <div class="flex space-x-6">
-                    <a href="https://www.instagram.com/pilates.renovar?igsh=MWIwdmF0b2prYmgwMQ==" target="_blank"
-                        class="text-3xl hover:text-pink-500 transition duration-300">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://wa.me/5575988466843" target="_blank"
-                        class="text-3xl hover:text-green-500 transition duration-300">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-                <p class="text-xs mt-6 text-gray-500 italic font-medium">Agende sua aula experimental!</p>
-            </div>
-        </div>
-        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-xs text-gray-500">
-            <p>&copy; 2026 Pilates RENOVAR. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    <app-footer></app-footer>
+    <script src="footer.js"></script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.location.protocol === 'file:') {
+                alert('⚠️ Atenção: Para que o sistema funcione corretamente, você deve rodar o servidor (node server.js) e acessar via http://localhost:3000. Abrir o arquivo diretamente no navegador impede a conexão com o banco de dados.');
+                return;
+            }
+
+            const userStr = localStorage.getItem('user');
+            if (!userStr) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const user = JSON.parse(userStr);
+            if (user.role !== 'doctor') {
+                window.location.href = 'areaclienta.html';
+                return;
+            }
+
+            // Update profile info
+            document.querySelector('#user-name-display').innerText = `Dr. ${user.name}`;
+            document.querySelector('#user-img-display').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=2D5A27&color=fff`;
+
+            fetchAppointments(user.id);
+        });
+
+        async function fetchAppointments(doctorId) {
+            try {
+                const response = await fetch(`/appointments?doctorId=${doctorId}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    renderAppointments(data.data);
+                } else {
+                    console.error('Erro ao buscar agendamentos:', data.message);
+                    document.getElementById('appointments-list').innerHTML = '<p class="text-center text-red-500 font-bold">Erro ao carregar agenda.</p>';
+                }
+            } catch (err) {
+                console.error('Erro na requisição:', err);
+                document.getElementById('appointments-list').innerHTML = '<p class="text-center text-red-500 font-bold">Erro de conexão.</p>';
+            }
+        }
+
+        function renderAppointments(appointments) {
+            const container = document.getElementById('appointments-list');
+            const totalCountEl = document.getElementById('total-appointments-count');
+            const remainingCountEl = document.getElementById('remaining-appointments-count');
+
+            if (appointments.length === 0) {
+                container.innerHTML = `
+                    <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 text-center">
+                        <i class="fas fa-calendar-times text-4xl text-gray-200 mb-4"></i>
+                        <p class="text-gray-500 font-medium">Nenhum atendimento agendado para hoje.</p>
+                    </div>
+                `;
+                totalCountEl.innerText = '0';
+                remainingCountEl.innerText = '0';
+                return;
+            }
+
+            container.innerHTML = '';
+            
+            // Format today's date for comparison
+            const todayStr = new Date().toISOString().split('T')[0];
+            const todayAppointments = appointments.filter(a => a.scheduled_at.startsWith(todayStr));
+            
+            totalCountEl.innerText = todayAppointments.length.toString().padStart(2, '0');
+            
+            // For "Remaining", let's assume those scheduled for later than now
+            const now = new Date();
+            const remainingAppointments = todayAppointments.filter(a => new Date(a.scheduled_at) > now);
+            remainingCountEl.innerText = remainingAppointments.length.toString().padStart(2, '0');
+
+            appointments.forEach(appo => {
+                const date = new Date(appo.scheduled_at);
+                const hour = date.getHours().toString().padStart(2, '0') + ':' + date.getMinutes().toString().padStart(2, '0');
+                const isNow = Math.abs(date - now) < 1800000; // Within 30 mins
+
+                const card = document.createElement('div');
+                card.className = isNow 
+                    ? "bg-green-700 p-6 rounded-3xl shadow-xl shadow-green-100 flex flex-col md:flex-row items-center gap-6 text-white transform scale-[1.02]"
+                    : "bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-6 hover:border-green-300 transition group";
+                
+                card.innerHTML = `
+                    <div class="text-center md:border-r md:pr-6 ${isNow ? 'border-green-600' : 'border-gray-100'}">
+                        <p class="text-2xl font-black ${isNow ? '' : 'text-gray-800'}">${hour}</p>
+                        <p class="text-[10px] font-bold ${isNow ? 'text-green-200 uppercase tracking-widest italic' : 'text-gray-400 uppercase'}">${isNow ? 'Agora' : 'Início'}</p>
+                    </div>
+
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2">
+                            <h3 class="text-lg font-bold ${isNow ? '' : 'text-gray-800'}">${appo.client_name}</h3>
+                            <span class="${isNow ? 'bg-white text-green-700' : 'bg-green-100 text-green-700'} text-[10px] font-black px-2 py-0.5 rounded uppercase italic">Confirmado</span>
+                        </div>
+                        <p class="text-sm ${isNow ? 'text-green-100' : 'text-gray-500'} font-medium">${appo.service_type} - <span class="${isNow ? 'text-white font-bold' : 'text-green-700'}">Prontuário #${appo.client_id}</span></p>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <a href="areadoutorprontuariospaciente.html?id=${appo.client_id}"
+                            class="${isNow ? 'bg-white text-green-700' : 'bg-gray-900 text-white'} px-4 py-2 rounded-xl text-xs font-bold hover:opacity-90 transition">
+                            <i class="fas fa-file-medical mr-1"></i> Abrir Prontuário
+                        </a>
+                        <button class="${isNow ? 'bg-green-600 text-white' : 'bg-gray-50 text-gray-400'} p-2 rounded-xl hover:text-green-700 transition">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+    </script>
+    <app-footer></app-footer>
+    <script src="footer.js"></script>
 </body>
 
 </html>
