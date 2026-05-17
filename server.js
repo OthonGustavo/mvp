@@ -324,9 +324,15 @@ app.post('/appointments/:id/cancel', async (req, res) => {
 
 app.get('/medical-records/:clientId', async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM medical_records WHERE client_id = $1 ORDER BY created_at DESC', [req.params.clientId]);
+        const result = await pool.query(`
+            SELECT id, client_id, doctor_id, content AS evolution_text, evolution_date AS created_at 
+            FROM medical_records 
+            WHERE client_id = $1 
+            ORDER BY evolution_date DESC
+        `, [req.params.clientId]);
         res.json({ success: true, data: result.rows });
     } catch (err) {
+        console.error('Erro ao buscar prontuários:', err);
         res.status(500).json({ success: false, message: 'Erro ao buscar prontuários' });
     }
 });
@@ -334,10 +340,15 @@ app.get('/medical-records/:clientId', async (req, res) => {
 app.post('/medical-records', async (req, res) => {
     const { client_id, doctor_id, evolution_text } = req.body;
     try {
-        const query = 'INSERT INTO medical_records (client_id, doctor_id, evolution_text) VALUES ($1, $2, $3) RETURNING *';
+        const query = `
+            INSERT INTO medical_records (client_id, doctor_id, content, evolution_date) 
+            VALUES ($1, $2, $3, NOW()) 
+            RETURNING id, client_id, doctor_id, content AS evolution_text, evolution_date AS created_at
+        `;
         const result = await pool.query(query, [client_id, doctor_id, evolution_text]);
         res.status(201).json({ success: true, data: result.rows[0] });
     } catch (err) {
+        console.error('Erro ao salvar prontuário:', err);
         res.status(500).json({ success: false, message: 'Erro ao salvar prontuário' });
     }
 });
@@ -349,20 +360,22 @@ app.get('/all-payments', async (req, res) => {
         const result = await pool.query(`
             SELECT p.*, u.name as client_name 
             FROM payments p 
-            LEFT JOIN users u ON p.user_id = u.id 
+            LEFT JOIN users u ON p.client_id = u.id 
             ORDER BY p.due_date DESC
         `);
         res.json({ success: true, data: result.rows });
     } catch (err) {
+        console.error('Erro ao buscar todos pagamentos:', err);
         res.status(500).json({ success: false, message: 'Erro ao buscar todos pagamentos' });
     }
 });
 
 app.get('/payments/:userId', async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM payments WHERE user_id = $1 ORDER BY due_date DESC', [req.params.userId]);
+        const result = await pool.query('SELECT * FROM payments WHERE client_id = $1 ORDER BY due_date DESC', [req.params.userId]);
         res.json({ success: true, data: result.rows });
     } catch (err) {
+        console.error('Erro ao buscar pagamentos:', err);
         res.status(500).json({ success: false, message: 'Erro ao buscar pagamentos' });
     }
 });
